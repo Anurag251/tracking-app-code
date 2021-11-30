@@ -1,0 +1,520 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap')
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: 'Lato', sans-serif
+  border: none
+  outline: none
+  background: none
+  text-decoration: none
+
+$main: #7775E4
+$pri: #BFBEFF
+$dark: #000000
+$light: #FFFFFF
+$para: #333333
+
+@mixin flex($justify)
+  display: flex
+  justify-content: $justify
+  align-items: center
+
+@mixin grid($columns)
+  display: grid
+  grid-template-columns: $columns
+  grid-gap: 20px
+
+@mixin image()
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+
+@mixin shrinkLabel()
+  top: -12px
+  left: 5px
+  transform: translateY(-50%) scale(.8)
+
+/**********    app    **********/
+.app
+  @include image()
+  padding: .3rem 0
+
+/**********    wrapper    **********/
+.wrapper
+  max-width: 1300px
+  margin: 0 auto
+  padding: 0 2rem
+
+section
+  padding: 3rem 20px
+
+/**********    section    **********/
+.section
+  @include flex($justify: center)
+  align-items: flex-start
+  margin-top: 6px
+
+.custom-button
+  height: 40px
+  padding: 0 1.5rem
+  @include flex($justify: center)
+  border-radius: 10px
+  font-size: 16px
+  color: $light
+  background-color: $main
+  cursor: pointer
+
+  svg
+    transform: translateX(5px)
+
+/**********    header    **********/
+header
+  @include grid($columns: 1fr 1fr 1fr)
+  background-color: rgba($dark, .45)
+  backdrop-filter: blur(30px)
+  padding: .5rem
+  border-radius: 20px
+  position: sticky
+  top: 0
+  z-index: 10
+
+  .logo
+    height: 60px
+    width: 60px
+
+    img
+      width: 100%
+
+  .search
+    @include flex($justify: center)
+
+    form
+      height: 50px
+      max-width: 300px
+      width: 100%
+      border-radius: 20px
+      background-color: rgba($light, .10)
+      position: relative
+
+      input
+        width: 100%
+        height: 100%
+        padding-left: 3rem
+        color: $light
+        font-size: 18px
+
+        &::placeholder
+          color: rgba($light, 8)
+
+      .search-btn
+        position: absolute
+        left: 10px
+        top: 50%
+        transform: translateY(-50%)
+        height: 28px
+        width: 28px
+        @include flex($justify: center)
+
+  .profile
+    @include flex($justify: flex-end)
+
+    .notifications
+      position: relative
+      height: 22px
+      width: 22px
+      @include flex($justify: center)
+
+      .dot
+        position: absolute
+        right: 0
+        top: 0
+        height: 10px
+        width: 10px
+        border-radius: 50%
+        background-color: #FF0000
+
+      img
+        width: 80%
+
+    .profile-details
+      @include flex($justify: center)
+      margin-left: 1rem
+
+      .profile-image
+        height: 50px
+        width: 50px
+        border-radius: 50%
+        object-fit: cover
+
+      .others
+        text-align: right
+        margin: 0 10px
+
+        .name
+          font-size: 16px
+          font-weight: 500
+          color: $light
+
+        .greet
+          font-size: 14px
+          font-weight: 400
+          color: #dcdcdc
+
+/**********    side-nav    **********/
+.side-nav
+  background-color: rgba($dark, .45)
+  border-radius: 20px
+  position: sticky
+  top: 80px
+  width: 18%
+  margin-right: 2%
+
+  .side-nav-bar
+    position: relative
+
+    .indic
+      position: absolute
+      left: 0
+      top: 0
+      height: 43px
+      border-radius: 10px
+      width: 2px
+      background-color: $pri
+      transition: .4s
+
+    .nav-links
+      height: 43px
+      position: relative
+      @include flex($justify: flex-start)
+      margin: 10px 0
+      cursor: pointer
+      border-radius: 10px
+      padding: 2rem 0
+
+      &:hover
+        background-color: rgba($dark, .2)
+
+      &.active
+        background-color: rgba($dark, .2)
+        .icon
+          svg
+            path
+              fill: $pri
+        .name
+          color: $pri
+
+      .icon
+        height: 24px
+        width: 24px
+        @include flex($justify: center)
+        margin: 0 15px
+
+        svg
+          height: 24px
+          width: 24px
+
+          path
+            transition: .4s
+
+      .name
+        font-size: 18px
+        color: $light
+        transition: .4s
+
+/**********    homepage    **********/
+.homepage
+  background-color: rgba($light, .75)
+  backbrop-filter: blur(25px)
+  border-radius: 20px
+  width: 100%
+
+/**********    banner    **********/
+.banner
+  width: 100%
+
+  .mySwiper
+    width: 100%
+
+    .swiper-slide
+      width: 100%
+
+  .slider
+    width: 100%
+
+    .image
+      height: 350px
+      width: 100%
+      border-radius: 20px
+      overflow: hidden
+      position: relative
+
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+      .content
+        position: absolute
+        left: 30px
+        top: 50%
+        transform: translateY(-50%)
+        z-index: 1
+        @include flex($justify: flex-start)
+        flex-direction: column
+        align-items: flex-start
+
+        h4
+          font-size: 18px
+          font-weight: 600
+          line-height: 43px
+          line-height: 10px
+
+        h1
+          font-size: 36px
+          font-weight: 500
+          max-width: 300px
+          margin-bottom: 1rem
+
+        p
+          font-size: 18px
+          max-width: 400px
+          margin-bottom: 30px
+
+/**********    feature    **********/
+.feature
+  .card-list
+    @include grid($columns: 1fr 1fr 1fr)
+
+    .card
+      padding: 1rem
+      position: relative
+      background-color: $light
+      padding-top: 5rem
+      margin-top: 7rem
+      border-radius: 20px
+      box-shadow: 0px 4px 17px rgba($dark, 0.10)
+
+      img
+        position: absolute
+        left: 50%
+        top: -20%
+        transform: translate(-50%, -50%)
+        width: 90%
+
+      .name
+        font-size: 24px
+        margin-bottom: 1rem
+
+      .desc
+        font-size: 18px
+        color: $para
+
+/**********    how-to-use    **********/
+.how-to-use
+  @include grid($columns: 1fr 1fr)
+
+  .details
+    .title-section
+      @include flex($justify: flex-start)
+      margin-bottom: 2rem
+
+      .icon
+        height: 90px
+        width: 90px
+        border-radius: 18px
+        background-color: $light
+        @include flex($justify: center)
+        margin-right: 10px
+
+      .info
+        p
+          font-size: 24px
+
+    .procress
+      .step
+        margin-bottom: 2rem
+        .sn
+          font-size: 24px
+          font-weight: 300
+          margin-bottom: 10px
+
+        .name
+          font-size: 24px
+          font-weight: 700
+          margin-bottom: 10px
+
+        p
+          font-size: 18px
+          margin-bottom: 10px
+
+  .image
+    img
+      height: 80%
+      width: 100%
+      object-fit: cover
+      border-radius: 20px
+
+/**********    earn-with-us    **********/
+.earn-with-us
+  @include grid($columns: 1fr 1fr)
+
+  .image
+    img
+      height: 250px
+      width: 100%
+      object-fit: cover
+      border-radius: 20px
+
+  .name
+    font-size: 24px
+    font-weight: 700
+    margin-bottom: 15px
+
+  ul
+    padding-left: 2rem
+    li
+      margin-bottom: 1rem
+
+/**********    footer    **********/
+footer
+  padding: 1rem
+  background-color: #141414
+  @include flex($justify: space-between)
+  margin-top: 12px
+  border-radius: 15px
+
+  h4
+    font-size: 18px
+    line-height: 22px
+    color: #C6C6C6
+    font-weight: 400
+
+  .social-links
+    @include flex($justify: flex-end)
+
+    .icon
+      height: 24px
+      width: 24px
+      border-radius: 6px
+      background-color: #383838
+      @include flex($justify: center)
+      margin-left: 10px
+
+      i
+        color: #ebebeb
+        font-size: 15px
+
+/**********    about-us    **********/
+.about-page
+  background-color: $light
+  padding: 2rem
+  border-radius: 20px
+
+/**********    page-banner    **********/
+.page-banner
+  h4
+    font-size: 18px
+    font-weight: 700
+
+  h2
+    font-size: 48px
+    font-weight: 400
+
+.full-card
+  @include grid($columns: 1fr 1.2fr)
+  margin-top: 2rem
+
+  &.rotate
+    @include grid($columns: 1.2fr 1fr)
+
+  img
+    height: 240px
+    width: 100%
+    border-radius: 20px
+    object-fit: cover
+
+  .details
+    h3
+      margin-bottom: 5px
+      font-size: 24px
+
+    p
+      font-size: 18px
+      color: $para
+      line-height: 1.5rem
+
+/**********    custom-input    **********/
+.custom-input
+  height: 60px
+  border-radius: 10px
+  position: relative
+  margin: 2rem 0
+
+  .form-input-label
+    position: absolute
+    left: 15px
+    top: 50%
+    transform: translateY(-50%)
+    font-size: 18px
+    color: #6F6F6F
+    z-index: 1
+    transition: .4s
+
+    &.shrink
+      @include shrinkLabel()
+
+  .input
+    height: 100%
+    width: 100%
+    background-color: $light
+    border: 2px solid #D3D3D3
+    border-radius: 10px
+    font-size: 18px
+    padding-left: 15px
+
+    &:focus ~ .form-input-label
+      @include shrinkLabel()
+
+  &.custom-text-area
+    height: 150px
+
+    .input
+      padding-top: .8rem
+
+    .form-input-label
+      top: 18%
+
+.error
+  position: fixed
+  left: 50%
+  top: 15%
+  transform: translate(-50%, -50%)
+  max-width: 600px
+  padding: .5rem 1rem
+  border-radius: 10px
+  background-color: rgba(#ff0000, .8)
+  color: $light
+  font-size: 18px
+  text-align: center
+  z-index: 30
+  pointer-events: none
+
+/**********    contact-page    **********/
+.contact-page
+  padding: 1.5rem
+  background-color: rgba($dark, .36)
+  backdrop-filter: blur(25px)
+  border-radius: 20px
+  @include grid($columns: 2fr 1fr)
+  align-items: flex-start
+
+  .contact-form
+    padding: 1.5rem
+    background-color: rgba($light, .84)
+    border-radius: 20px
+
+    h3
+      font-size: 30px
+      margin: 1rem 0 .4rem
