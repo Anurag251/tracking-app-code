@@ -1,6 +1,5 @@
 import React from "react";
 import CustomButton from "./custom-button.component";
-import { ThinArrowIcon } from "./icons.component";
 
 export const Slider = ({ sliders }) => {
   return (

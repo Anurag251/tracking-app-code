@@ -13,7 +13,7 @@ import { Slider } from "./slider.component";
 SwiperCore.use([Autoplay, EffectFade, Pagination]);
 
 const Slide = () => {
-  const [sliderData, setSliderData] = useContext(SliderContext);
+  const [sliderData] = useContext(SliderContext);
 
   return (
     <Swiper

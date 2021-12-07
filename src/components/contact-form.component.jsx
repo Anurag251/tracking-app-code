@@ -14,7 +14,7 @@ const ContactForm = () => {
   // const [email, setEmail] = useState("");
   // const [mobileNumber, setMobileNumber] = useState("");
   // const [yourMessage, setYourMessage] = useState("");
-  const [error, setError] = useState("");
+  const [error] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;

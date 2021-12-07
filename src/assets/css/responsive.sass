@@ -1,0 +1,210 @@
+$main: #7775E4
+$pri: #BFBEFF
+$dark: #000000
+$light: #FFFFFF
+$para: #333333
+
+@mixin flex($justify)
+  display: flex
+  justify-content: $justify
+  align-items: center
+
+@mixin grid($columns)
+  display: grid
+  grid-template-columns: $columns
+  grid-gap: 20px
+
+@mixin image()
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+
+@mixin shrinkLabel()
+  top: -12px
+  left: 5px
+  transform: translateY(-50%) scale(.8)
+
+@mixin btnHover()
+  background-color: #6966ff
+  box-shadow: 0 0 4px rgba(#6966ff, .2)
+
+@media only screen and (max-width: 1300px)
+  .wrapper
+    max-width: 1000px
+
+  .all-pages
+    width: 75%
+
+  .side-nav
+    width: 24%
+
+  /**********    feature    **********/
+  .feature
+    .card-list
+      @include grid($columns: 1fr 1fr)
+
+  /**********    how-to-use    **********/
+  .how-to-use
+    @include grid($columns: 1fr)
+
+    .image
+      img
+        height: 100%
+        width: 100%
+        object-fit: cover
+        border-radius: 20px
+
+  /**********    earn-with-us    **********/
+  .earn-with-us
+    @include grid($columns: 1fr)
+
+@media only screen and (max-width: 800px)
+  .wrapper
+    max-width: 600px
+
+  .all-pages
+    width: 70%
+
+  .side-nav
+    width: 28%
+
+  /**********    header    **********/
+  header
+    @include grid($columns: .2fr 1fr 1fr)
+
+    .profile
+      .profile-details
+        .others
+          display: none
+
+  /**********    feature    **********/
+  .feature
+    .card-list
+      @include grid($columns: 1fr )
+
+@media only screen and (max-width: 600px)
+  .wrapper
+    max-width: 450px
+    padding: 0 1rem
+
+  /**********    section    **********/
+  .section
+    display: block
+
+  .all-pages
+    width: 100%
+
+  /**********    header    **********/
+  header
+    @include grid($columns: .2fr 1fr .2fr)
+    grid-gap: 10px
+
+    .das
+      display: none
+
+    .sign-up-btn
+      span
+        display: none
+
+    .profile
+      .profile-details
+        .others
+          display: none
+
+  .side-nav-mob
+    position: fixed
+    bottom: 6px
+    left: 50%
+    transform: translateX(-50%)
+    width: 95%
+    background-color: rgba($dark, .7)
+    backdrop-filter: blur(10px)
+    z-index: 10
+    height: 60px
+    border-radius: 20px
+
+    .indic
+      position: absolute
+      top: 0
+      transform: translate(-50%, -50%)
+      height: 40px
+      width: 40px
+      border-radius: 50%
+      background-color: $main
+      transition: .4s
+
+    .side-nav-bar
+      @include flex($justify: space-evenly)
+      list-style: none
+      height: 100%
+
+      a
+        height: 100%
+
+      .nav-links
+        position: relative
+        height: 100%
+
+        &.active
+          .icon
+            top: 0%
+
+            svg
+              path
+                fill: $light
+
+          .name
+            opacity: 1
+            top: 60%
+
+        .icon
+          position: absolute
+          left: 50%
+          top: 50%
+          transform: translate(-50%, -50%)
+          height: 20px
+          width: 20px
+          @include flex($justify: center)
+          transition: .4s
+          z-index: 2
+
+          svg
+            path
+              fill: $light
+              transition: .4s
+
+        .name
+          position: absolute
+          left: 50%
+          top: 50%
+          transform: translate(-50%, -50%)
+          opacity: 0
+          font-size: 16px
+          color: $light
+          text-align: center
+          transition: .4s
+          z-index: 1
+
+  /**********    banner    **********/
+  .banner
+    .slider
+      .image
+        .content
+          position: absolute
+          left: 0
+          padding: 1rem
+          top: 50%
+
+  // .side-nav
+  //   position: fixed
+  //   bottom: 0
+  //   left: 50%
+  //   transform: translateX(-50%)
+  //   width: 90%
+
+  //   .side-nav-bar
+  //     @include flex($justify: space-evenly)
+
+  /**********    footer    **********/
+  footer
+    margin-bottom: 5rem

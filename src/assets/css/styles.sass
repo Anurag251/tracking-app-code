@@ -36,10 +36,107 @@ $para: #333333
   left: 5px
   transform: translateY(-50%) scale(.8)
 
+@mixin btnHover()
+  // transform: scale(1.02) translateY(-1px)
+  background-color: #6966ff
+  box-shadow: 0 0 4px rgba(#6966ff, .2)
+
+// .loader
+//   height: 100px
+//   width: 100px
+//   @include flex($justify: center)
+
+//   img
+//     width: 100%
+
+.loading
+  height: 100%
+  width: 100%
+  @include flex($justify: center)
+
+  .loading-area
+    position: relative
+    height: 50px
+    width: 50px
+    @include flex($justify: center)
+    border-radius: 50%
+    animation: spin 1s ease-in-out infinite
+
+    @keyframes spin
+      0%
+        transform: rotate(0deg)
+
+      100%
+        transform: rotate(360deg)
+
+    p
+      position: absolute
+      left: 50%
+      top: 150%
+      transform: translate(-50%, -50%)
+      color: $light
+
+    .circle
+      position: absolute
+      height: 100%
+      width: 100%
+      border-radius: 50%
+      animation: rotate 1s ease-in-out infinite
+
+      @keyframes rotate
+        0%
+          transform: translate(-50%, -50%) rotate(0deg)
+          // border-color: $main
+          border-color: #FF9900
+
+        25%
+          transform: translate(-50%, -50%) rotate(90deg)
+          // border-color: #8c00ff
+          border-color: #FFE600
+
+        50%
+          transform: translate(-50%, -50%) rotate(180deg)
+          // border-color: #00e1ff
+          border-color: #DBFF00
+
+        75%
+          transform: translate(-50%, -50%) rotate(270deg)
+          // border-color: #3bfd00
+          border-color: #ADFF00
+
+        100%
+          transform: translate(-50%, -50%) rotate(360deg)
+          // border-color: #ffe600
+          border-color: #70FF00
+
+      &:nth-child(1)
+        left: 20%
+        top: 20%
+        transform: translate(-50%, -50%)
+        border-left-width: 3px
+        border-left-style: solid
+
+      &:nth-child(2)
+        left: 80%
+        top: 20%
+        transform: translate(-50%, -50%)
+        border-right-width: 3px
+        border-right-style: solid
+        animation-delay: .2s
+
+      &:nth-child(3)
+        left: 50%
+        top: 80%
+        transform: translate(-50%, -50%)
+        border-bottom-width: 3px
+        border-bottom-style: solid
+        animation-delay: .1s
+
 /**********    app    **********/
 .app
   @include image()
   padding: .3rem 0
+  min-height: 100vh
 
 /**********    wrapper    **********/
 .wrapper
@@ -47,15 +144,16 @@ $para: #333333
   margin: 0 auto
   padding: 0 2rem
 
+/**********    section    **********/
 section
   padding: 3rem 20px
 
-/**********    section    **********/
 .section
   @include flex($justify: center)
   align-items: flex-start
   margin-top: 6px
 
+/**********    custom-button    **********/
 .custom-button
   height: 40px
   padding: 0 1.5rem
@@ -65,9 +163,17 @@ section
   color: $light
   background-color: $main
   cursor: pointer
+  transition: all .45s cubic-bezier(0,0,0,1)
+
+  &:hover
+    @include btnHover()
+
+    svg
+      transform: translateX(10px)
 
   svg
     transform: translateX(5px)
+    transition: all .45s cubic-bezier(0,0,0,1)
 
 /**********    header    **********/
 header
@@ -117,8 +223,64 @@ header
         width: 28px
         @include flex($justify: center)
 
+  .das
+    height: 20px
+    width: 1px
+    background-color: rgba($light, .4)
+    margin: 0 1rem
+
+  .sign-up-btn
+    @include flex($justify: flex-end)
+
+    .icon
+      height: 31px
+      width: 31px
+      border-radius: 50%
+      background-color: $dark
+      @include flex($justify: center)
+      margin-right: 10px
+
+    span
+      font-size: 18px
+      color: $light
+      @include flex($justify: center)
+
+      &.su
+        text-decoration: underline
+
+      svg
+        margin-left: 5px
+
   .profile
     @include flex($justify: flex-end)
+    position: relative
+
+    .mobile-popup
+      position: absolute
+      top: 60px
+      right: 5px
+      background-color: $light
+      padding: .5rem
+      border-radius: 10px
+      box-shadow: 0 4px 10px rgba($dark, .2)
+
+      .pointer
+        position: absolute
+        right: 10px
+        top: 5%
+        transform: translateY(-50%) rotate(45deg)
+        height: 10px
+        width: 10px
+        border-radius: 2px
+        background-color: $light
+
+      .inner
+        @include flex($justify: center)
+        cursor: pointer
+
+        span
+          font-size: 18px
+          margin-right: 5px
 
     .notifications
       position: relative
@@ -161,6 +323,10 @@ header
           font-size: 14px
           font-weight: 400
           color: #dcdcdc
+
+/**********    body    **********/
+.all-pages
+  width: 80%
 
 /**********    side-nav    **********/
 .side-nav
@@ -270,17 +436,20 @@ header
           font-weight: 600
           line-height: 43px
           line-height: 10px
+          text-shadow: 0 1px 3px rgba($light, .9)
 
         h1
           font-size: 36px
           font-weight: 500
           max-width: 300px
           margin-bottom: 1rem
+          text-shadow: 0 1px 3px rgba($light, .9)
 
         p
           font-size: 18px
           max-width: 400px
           margin-bottom: 30px
+          text-shadow: 0 1px 3px rgba($light, .9)
 
 /**********    feature    **********/
 .feature
@@ -292,7 +461,7 @@ header
       position: relative
       background-color: $light
       padding-top: 5rem
-      margin-top: 7rem
+      margin-top: 10rem
       border-radius: 20px
       box-shadow: 0px 4px 17px rgba($dark, 0.10)
 
@@ -518,3 +687,295 @@ footer
     h3
       font-size: 30px
       margin: 1rem 0 .4rem
+
+/**********    contact-infos    **********/
+.contact-infos
+  padding: 1rem
+  background-color: $main
+  border-radius: 20px
+  color: $light
+
+  h3
+    font-size: 24px
+    margin-bottom: .7rem
+
+  h5
+    position: sticky
+    top:
+    font-size: 18px
+    margin-bottom: .6rem
+    font-weight: 400
+
+.sign-up, .login
+  @include image()
+  min-height: 100vh
+  @include flex($justify: center)
+
+  .inner
+    max-width: 420px
+    width: 100%
+
+    .top-sec
+      @include flex($justify: space-between)
+      align-items: flex-end
+      margin-bottom: 5px
+
+      .back-btn, .home-btn
+        height: 42px
+        width: 42px
+        border-radius: 50%
+        background-color: $dark
+        @include flex($justify: center)
+
+    .sign-nav
+      background-color: rgba($dark, .44)
+      border-radius: 15px
+      position: relative
+      height: 50px
+      margin-bottom: 5px
+
+      .indicator
+        position: absolute
+        top: 50%
+        transform: translate(-50%, -50%)
+        width: 25%
+        height: 80%
+        border-radius: 10px
+        background-color: $main
+        transition: .4s
+        z-index: 1
+
+      ul
+        @include flex($justify: space-around)
+        height: 100%
+        position: relative
+        z-index: 2
+        padding: 0
+        margin: 0
+        list-style: none
+        color: $light
+        font-weight: 500
+
+        li
+          padding: 1rem
+          cursor: pointer
+          font-size: 18px
+
+    .for-user, .for-rider, .for-vender
+      opacity: 0
+      transition: .4s
+      transition-delay: 1s
+
+    .sign-up-form, .login-form
+      padding: 2rem 0
+      background-color: rgba($dark, .44)
+      border-radius: 20px
+      overflow: hidden
+
+      .form
+        padding: 0 1.5rem
+
+      .form-slide
+        width: 200%
+        display: flex
+        transition: .4s
+
+        .form
+          width: 50%
+          padding: 0 1.5rem
+
+      h4
+        font-size: 24px
+        color: $light
+        font-weight: 600
+        margin-bottom: 2rem
+        padding: 0 1.5rem
+
+      .form-input
+        height: 40px
+        width: 100%
+        position: relative
+        margin-bottom: 2rem
+
+        input
+          height: 100%
+          width: 100%
+          font-size: 18px
+          padding-left: 5px
+          color: $light
+
+          &:focus ~ .form-input-label
+            @include shrinkLabel()
+
+        span
+          position: absolute
+          top: 50%
+          left: 5px
+          transform: translateY(-50%)
+          font-size: 16px
+          color: #c6c6c6
+          pointer-events: none
+          transition: .4s
+
+          &.shrink
+            @include shrinkLabel()
+
+        .line
+          position: absolute
+          bottom: 0
+          left: 50%
+          transform: translateX(-50%)
+          height: 2px
+          width: 100%
+          background-color: rgba($light,.26)
+
+          &.glow
+            &::after
+              width: 100%
+
+          &::after
+            content: ''
+            position: absolute
+            bottom: 0
+            left: 50%
+            transform: translateX(-50%)
+            height: 2px
+            width: 0%
+            background-color: rgba($light,.7)
+            transition: .4s
+
+      .btn-group
+        @include flex($justify: space-between)
+
+        button
+          width: 100%
+          padding: .5rem 1rem
+          background-color: $main
+          font-size: 18px
+          color: $light
+          border-radius: 10px
+          cursor: pointer
+          margin: 0 5px
+
+          &:hover
+            @include btnHover()
+
+      .or
+        font-size: 16px
+        text-align: center
+        color: $light
+        position: relative
+        margin: 1.5rem
+
+        &::after
+          content: ''
+          position: absolute
+          left: 0
+          top: 50%
+          transform: translateY(50%)
+          height: 1px
+          width: 42%
+          background-color: rgba($light, .26)
+
+        &::before
+          content: ''
+          position: absolute
+          right: 0
+          top: 50%
+          transform: translateY(50%)
+          height: 1px
+          width: 42%
+          background-color: rgba($light, .26)
+
+      .social-icons
+        max-width: 250px
+        width: 100%
+        margin: 0 auto
+        @include flex($justify: space-between)
+
+        .icon
+          height: 35px
+          width: 35px
+          border-radius: 50%
+          background-color: $main
+          @include flex($justify: center)
+          color: $light
+          font-size: 18px
+          cursor: pointer
+
+          &:hover
+            @include btnHover()
+
+      .have-account
+        text-align: center
+        color: $light
+        margin-top: 1rem
+        font-size: 16px
+
+        span
+          cursor: pointer
+          color: $light
+          text-decoration: underline
+
+.blogpage
+  padding: 2rem
+  background-color: rgba($dark, .26)
+  border-radius: 20px
+
+  .title
+    font-size: 30px
+    font-weight: 600
+    color: $light
+    margin-bottom: 2rem
+
+  .blog
+    .blog-list
+      @include grid($columns: 1fr 1fr 1fr)
+
+      .blog-item
+        border-radius: 20px
+        overflow: hidden
+        background-color: $light
+        transition: .4s
+
+        &:hover
+          box-shadow: 0 4px 10px rgba($dark, .2)
+          .image
+            img
+              transform: translateX(0) scale(1)
+              transition: .45s cubic-bezier(0,0,0,1)
+
+          .content
+            .blog-title
+              color: $main
+
+        .image
+          height: 200px
+          width: 100%
+          border-radius: 10px
+          overflow: hidden
+
+          img
+            width: 100%
+            height: 100%
+            object-fit: cover
+            transform: translateX(-30px) scale(1.3)
+
+        .content
+          padding: 1rem 1rem 1.5rem
+          border-radius: 20px
+
+          .date
+            color: rgba($dark,.6)
+            font-size: 12px
+            font-weight: 400
+            margin-bottom: 10px
+
+          .blog-title
+            font-size: 18px
+            font-weight: 600
+            color: $dark
+
+.map
+  height: 400px
+  width: 100%
