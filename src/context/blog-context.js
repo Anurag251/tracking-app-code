@@ -11,7 +11,7 @@ export const BlogProvider = () => {
   const [blogDatas, setBlogDatas] = useState([
     {
       id: 1,
-      title: "Tracking App Ride-sharing Insurance",
+      title: "Tracking App Ride-sharing ",
       date: "dec 03, 2021",
       imageURL: blogImg1,
     },

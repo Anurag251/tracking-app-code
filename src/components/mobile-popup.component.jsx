@@ -1,11 +1,17 @@
 import React from "react";
 
-const MobilePopup = ({ children }) => {
+const MobilePopup = ({ children, profileDrop, toggles }) => {
   return (
-    <div className="mobile-popup">
-      <div className="pointer"></div>
-      <div className="inner">{children}</div>
-    </div>
+    <>
+      <div
+        className={`${profileDrop ? "bg-for-close" : ""}`}
+        onClick={() => toggles()}
+      ></div>
+      <div className={`mobile-popup ${profileDrop ? "active" : ""}`}>
+        <div className="pointer"></div>
+        <div className="inner">{children}</div>
+      </div>
+    </>
   );
 };
 

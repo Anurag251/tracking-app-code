@@ -16,7 +16,7 @@ const Aboutpage = () => {
         app-based services including ride-sharing, food delivery and free games.
       </PageBanner>
 
-      <section>
+      <section className="no-padding">
         <FullCard title="What is Tracking App?" image={aboutImage1}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever

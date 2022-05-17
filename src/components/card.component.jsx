@@ -1,7 +1,13 @@
 import React from "react";
-import feature1 from "../assets/images/feature1.png";
-import feature2 from "../assets/images/feature2.png";
-import feature3 from "../assets/images/feature3.png";
+
+const feature1 =
+  "https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+
+const feature2 =
+  "https://images.pexels.com/photos/5696170/pexels-photo-5696170.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+
+const feature3 =
+  "https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
 
 export const Card = () => {
   return (
@@ -26,7 +32,7 @@ export const Card = () => {
 
       <div className="card">
         <img src={feature3} alt="cardImage" />
-        <h3 className="name">Best offers in town</h3>
+        <h3 className="name">Warehouse</h3>
         <p className="desc">
           The best offers and combos at the best price you can get. Grab it
           before it’s too late!

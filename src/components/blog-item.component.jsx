@@ -1,29 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Loading from "./loading.component";
 
 const BlogItem = ({ blogData }) => {
   return (
     <>
       {!blogData ? (
-        <div className="loading">
-          <div className="loading-area">
-            <div className="circle"></div>
-            <div className="circle"></div>
-            <div className="circle"></div>
-          </div>
-        </div>
+        <Loading />
       ) : (
         <Link to="/blog">
           <div className="blog-item">
             <div className="image">
               {!blogData.imageURL ? (
-                <div className="loading">
-                  <div className="loading-area">
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                  </div>
-                </div>
+                <Loading />
               ) : (
                 <img src={blogData.imageURL} alt="blog_image" />
               )}

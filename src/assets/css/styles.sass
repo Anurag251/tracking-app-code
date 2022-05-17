@@ -41,18 +41,87 @@ $para: #333333
   background-color: #6966ff
   box-shadow: 0 0 4px rgba(#6966ff, .2)
 
-// .loader
-//   height: 100px
-//   width: 100px
-//   @include flex($justify: center)
+@mixin trans()
+  transition: all .5s cubic-bezier(0,1,0,1)
 
-//   img
-//     width: 100%
+/**********    bg-for-close    **********/
+.bg-for-close
+  position: fixed
+  left: 0
+  top: 0
+  height: 100%
+  width: 100%
+  background-color: rgba($dark, .01)
+  z-index: 2
 
+/**********    mobile-popup    **********/
+.mobile-popup
+  position: absolute
+  top: 40px
+  right: 5px
+  background-color: $light
+  padding: .5rem 1rem
+  border-radius: 10px
+  box-shadow: 0 4px 10px rgba($dark, .2)
+  pointer-events: none
+  opacity: 0
+  z-index: 10
+  transition: all .45s cubic-bezier(0,1,0,1)
+
+  &.active
+    top: 60px
+    opacity: 1
+    pointer-events: auto
+
+  .pointer
+    position: absolute
+    right: 15px
+    top: -3px
+    transform: rotate(45deg)
+    height: 10px
+    width: 10px
+    border-radius: 2px
+    background-color: $light
+
+  .inner
+    cursor: pointer
+    position: relative
+    z-index: 10
+
+    ul
+      li
+        @include flex($justify: center)
+        line-height: 3rem
+        border-bottom: 1px solid rgba($dark, .2)
+
+        &:nth-last-child(1)
+          border-bottom: none
+
+        &:hover
+          svg
+            path
+              fill: $main
+
+          span
+            color: $main
+
+        svg
+          path
+            fill: $dark
+
+        span
+          font-size: 18px
+          margin-right: 5px
+
+/**********    loading    **********/
 .loading
   height: 100%
   width: 100%
   @include flex($justify: center)
+
+  &.fullPage
+    background-color: #292929
+    height: 100vh
 
   .loading-area
     position: relative
@@ -60,7 +129,7 @@ $para: #333333
     width: 50px
     @include flex($justify: center)
     border-radius: 50%
-    animation: spin 1s ease-in-out infinite
+    animation: spin 2s ease-in-out infinite
 
     @keyframes spin
       0%
@@ -135,7 +204,7 @@ $para: #333333
 /**********    app    **********/
 .app
   @include image()
-  padding: .3rem 0
+  padding: .01rem 0
   min-height: 100vh
 
 /**********    wrapper    **********/
@@ -144,9 +213,18 @@ $para: #333333
   margin: 0 auto
   padding: 0 2rem
 
+  &.noSpace
+    max-width: auto
+    padding: 0
+
 /**********    section    **********/
 section
-  padding: 3rem 20px
+  padding: 0 20px
+
+  padding-bottom: 3rem
+
+  &.no-padding
+    padding: 3rem 0
 
 .section
   @include flex($justify: center)
@@ -163,7 +241,7 @@ section
   color: $light
   background-color: $main
   cursor: pointer
-  transition: all .45s cubic-bezier(0,0,0,1)
+  @include trans()
 
   &:hover
     @include btnHover()
@@ -173,7 +251,7 @@ section
 
   svg
     transform: translateX(5px)
-    transition: all .45s cubic-bezier(0,0,0,1)
+    @include trans()
 
 /**********    header    **********/
 header
@@ -239,6 +317,7 @@ header
       background-color: $dark
       @include flex($justify: center)
       margin-right: 10px
+      pointer-events: none
 
     span
       font-size: 18px
@@ -254,33 +333,6 @@ header
   .profile
     @include flex($justify: flex-end)
     position: relative
-
-    .mobile-popup
-      position: absolute
-      top: 60px
-      right: 5px
-      background-color: $light
-      padding: .5rem
-      border-radius: 10px
-      box-shadow: 0 4px 10px rgba($dark, .2)
-
-      .pointer
-        position: absolute
-        right: 10px
-        top: 5%
-        transform: translateY(-50%) rotate(45deg)
-        height: 10px
-        width: 10px
-        border-radius: 2px
-        background-color: $light
-
-      .inner
-        @include flex($justify: center)
-        cursor: pointer
-
-        span
-          font-size: 18px
-          margin-right: 5px
 
     .notifications
       position: relative
@@ -348,7 +400,7 @@ header
       border-radius: 10px
       width: 2px
       background-color: $pri
-      transition: .4s
+      @include trans()
 
     .nav-links
       height: 43px
@@ -382,12 +434,12 @@ header
           width: 24px
 
           path
-            transition: .4s
+            @include trans()
 
       .name
         font-size: 18px
         color: $light
-        transition: .4s
+        @include trans()
 
 /**********    homepage    **********/
 .homepage
@@ -399,6 +451,7 @@ header
 /**********    banner    **********/
 .banner
   width: 100%
+  position: relative
 
   .mySwiper
     width: 100%
@@ -416,6 +469,16 @@ header
       overflow: hidden
       position: relative
 
+      &::after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        background-color: rgba($dark, .4)
+        z-index: 1
+
       img
         width: 100%
         height: 100%
@@ -426,30 +489,31 @@ header
         left: 30px
         top: 50%
         transform: translateY(-50%)
-        z-index: 1
         @include flex($justify: flex-start)
         flex-direction: column
         align-items: flex-start
+        color: $light
+        z-index: 3
 
         h4
           font-size: 18px
           font-weight: 600
           line-height: 43px
           line-height: 10px
-          text-shadow: 0 1px 3px rgba($light, .9)
+          // text-shadow: 0 1px 3px rgba($light, .9)
 
         h1
           font-size: 36px
           font-weight: 500
           max-width: 300px
           margin-bottom: 1rem
-          text-shadow: 0 1px 3px rgba($light, .9)
+          // text-shadow: 0 1px 3px rgba($light, .9)
 
         p
           font-size: 18px
           max-width: 400px
           margin-bottom: 30px
-          text-shadow: 0 1px 3px rgba($light, .9)
+          // text-shadow: 0 1px 3px rgba($light, .9)
 
 /**********    feature    **********/
 .feature
@@ -471,6 +535,9 @@ header
         top: -20%
         transform: translate(-50%, -50%)
         width: 90%
+        height: 200px
+        object-fit: cover
+        border-radius: 20px
 
       .name
         font-size: 24px
@@ -591,6 +658,7 @@ footer
     font-size: 48px
     font-weight: 400
 
+/**********    full-card    **********/
 .full-card
   @include grid($columns: 1fr 1.2fr)
   margin-top: 2rem
@@ -613,6 +681,7 @@ footer
       font-size: 18px
       color: $para
       line-height: 1.5rem
+      text-align: justify
 
 /**********    custom-input    **********/
 .custom-input
@@ -629,7 +698,7 @@ footer
     font-size: 18px
     color: #6F6F6F
     z-index: 1
-    transition: .4s
+    @include trans()
 
     &.shrink
       @include shrinkLabel()
@@ -655,6 +724,7 @@ footer
     .form-input-label
       top: 18%
 
+/**********    error    **********/
 .error
   position: fixed
   left: 50%
@@ -701,10 +771,15 @@ footer
 
   h5
     position: sticky
-    top:
+    // top:
     font-size: 18px
     margin-bottom: .6rem
     font-weight: 400
+
+/**********    sign-up, login    **********/
+
+.login-page
+  @include image()
 
 .sign-up, .login
   @include image()
@@ -742,7 +817,7 @@ footer
         height: 80%
         border-radius: 10px
         background-color: $main
-        transition: .4s
+        @include trans()
         z-index: 1
 
       ul
@@ -763,7 +838,7 @@ footer
 
     .for-user, .for-rider, .for-vender
       opacity: 0
-      transition: .4s
+      @include trans()
       transition-delay: 1s
 
     .sign-up-form, .login-form
@@ -778,7 +853,7 @@ footer
       .form-slide
         width: 200%
         display: flex
-        transition: .4s
+        @include trans()
 
         .form
           width: 50%
@@ -815,7 +890,7 @@ footer
           font-size: 16px
           color: #c6c6c6
           pointer-events: none
-          transition: .4s
+          @include trans()
 
           &.shrink
             @include shrinkLabel()
@@ -842,7 +917,7 @@ footer
             height: 2px
             width: 0%
             background-color: rgba($light,.7)
-            transition: .4s
+            @include trans()
 
       .btn-group
         @include flex($justify: space-between)
@@ -917,6 +992,7 @@ footer
           color: $light
           text-decoration: underline
 
+/**********    blogpage    **********/
 .blogpage
   padding: 2rem
   background-color: rgba($dark, .26)
@@ -936,7 +1012,7 @@ footer
         border-radius: 20px
         overflow: hidden
         background-color: $light
-        transition: .4s
+        @include trans()
 
         &:hover
           box-shadow: 0 4px 10px rgba($dark, .2)
@@ -976,6 +1052,232 @@ footer
             font-weight: 600
             color: $dark
 
+/**********    map    **********/
 .map
   height: 400px
   width: 100%
+
+/**********    notification-page    **********/
+.notification-page
+  padding: 2rem
+  background-color: $light
+  border-radius: 20px
+
+  .title
+    margin-bottom: 1rem
+
+  .notifications-list
+    @include flex($justify: flex-start)
+    flex-direction: column
+
+    .item
+      @include grid($columns: .1fr 5fr)
+      padding: 1.5rem 0
+      align-items: flex-start
+      border-bottom: 1px solid rgba($dark, .2)
+
+      &:nth-last-child(1)
+        border-bottom: none
+
+      .icon
+        height: 40px
+        width: 40px
+        border-radius: 50%
+        background-color: rgba($main, .3)
+        @include flex($justify: center)
+
+        svg
+          width: 60%
+          path
+            fill: $main
+
+      .details
+        .desc
+          font-size: 18px
+          color: $para
+          line-height: 1.7rem
+          margin-bottom: .6rem
+          text-align: justify
+
+        .date
+          font-size: 14px
+          color: rgba($dark, .5)
+          font-weight: 400
+
+.solutions
+  .title
+    font-size: 30px
+    margin-bottom: 2rem
+    text-align: center
+    font-weight: 600
+
+  .mySwiper
+    padding-bottom: 2rem
+
+  .item
+    height: 200px
+    width: 100%
+    position: relative
+    border-radius: 20px
+    overflow: hidden
+
+    &:hover
+      .image
+        transform: scale(1) translateX(0)
+
+      .details
+        p
+          max-height: 50px
+          opacity: 1
+          pointer-events: auto
+
+      &::after
+        background-image: linear-gradient(180deg, rgba($dark, .1), rgba($dark, .8))
+
+    .image
+      height: 100%
+      width: 100%
+      @include image()
+      transform: scale(1.3) translateX(-8px)
+      @include trans()
+
+    &::after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+      background-image: linear-gradient(180deg, rgba($dark, .0), rgba($dark, .6))
+      z-index: 1
+      @include trans()
+
+    .details
+      position: absolute
+      bottom: 0
+      left: 0
+      padding: .5rem
+      color: $light
+      z-index: 2
+
+      .name
+        font-size: 18px
+        margin-bottom: .4rem
+
+      p
+        max-height: 0
+        overflow-y: auto
+        height: 100%
+        font-size: 14px
+        opacity: 0
+        pointer-events: none
+        @include trans()
+
+.message-page
+  background-color: #323232
+  height: 100vh
+  padding: 1rem 10px
+  @include flex($justify: space-between)
+  align-items: flex-start
+  flex-direction: column
+
+  .chat-head
+    @include flex($justify: flex-start)
+    color: $light
+    margin-bottom: 1rem
+
+    .user-image
+      height: 40px
+      width: 40px
+      margin: 0 10px
+
+      img
+        height: 100%
+        width: 100%
+        border-radius: 50%
+        object-fit: cover
+
+    .user-name
+      font-size: 16px
+      font-weight: 500
+
+    .status
+      font-size: 12px
+      font-weight: 400
+
+  .message-input
+    width: 100%
+    height: 40px
+    background-color: #6F6F6F
+    border-radius: 4px
+    @include flex($justify: space-between)
+    margin-top: 1rem
+
+    input
+      width: 100%
+      height: 100%
+      padding: 0 1rem
+      font-size: 15px
+      color: $light
+
+      &::placeholder
+        color: rgba($light, .8)
+
+    .send-message-btn
+      padding: .1rem .6rem
+      font-size: 16px
+      font-weight: 600
+      text-transform: uppercase
+      color: #e7e7e7
+
+.message-section
+  max-height: 80vh
+  height: 100%
+  width: 100%
+  overflow-y: scroll
+
+.message-layout
+  width: 100%
+  @include flex($justify: flex-start)
+  flex-direction: column
+
+  .others-message, .your-message
+    width: 100%
+    @include flex($justify: flex-start)
+    align-items: flex-end
+    margin-bottom: 10px
+
+    .user-image
+      height: 30px
+      width: 30px
+      border-radius: 50%
+      @include image()
+      margin-right: 5px
+
+      &.noImage
+        display: none
+
+    .message-box
+      padding: .5rem
+      border-radius: 10px 10px 10px 0
+      background-color: #494949
+      max-width: 70vw
+
+      // &.my-message
+
+      .text-message
+        color: $light
+        font-size: 14px
+
+      .send-time
+        margin-top: 5px
+        color: rgba($light, .7)
+        font-size: 10px
+
+  .your-message
+    width: 100%
+    @include flex($justify: flex-end)
+
+    .message-box
+      border-radius: 10px 10px 0 10px
+      background-color: $main

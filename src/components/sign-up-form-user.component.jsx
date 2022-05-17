@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FormInputSignInSignUp from "./form-input-sign-in-sign-up.component";
 
+import { signInWithGoogle } from "../firebase/firebase.utils";
+
 const SignUpFormUser = () => {
   const [formValues, setFormValuse] = useState({
     firstName: "",
@@ -15,6 +17,7 @@ const SignUpFormUser = () => {
   });
 
   const [changeType, setChangeType] = useState("text");
+
   const [move, setMove] = useState(0);
 
   const handleChange = (event) => {
@@ -122,17 +125,17 @@ const SignUpFormUser = () => {
       <div className="or">or</div>
 
       <div className="social-icons">
-        <div className="icon">
+        <button className="icon">
           <i className="fab fa-facebook"></i>
-        </div>
+        </button>
 
-        <div className="icon">
+        <button className="icon" onClick={signInWithGoogle}>
           <i className="fab fa-google"></i>
-        </div>
+        </button>
 
-        <div className="icon">
+        <button className="icon">
           <i className="fab fa-apple"></i>
-        </div>
+        </button>
       </div>
 
       <div className="have-account">

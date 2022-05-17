@@ -1,7 +1,15 @@
 import React, { useState, createContext } from "react";
-import bannerImage1 from "../assets/images/banner.png";
-import bannerImage2 from "../assets/images/banner2.png";
+
 import Slide from "../components/slide.component";
+
+const bannerImage1 =
+  "https://images.pexels.com/photos/4484155/pexels-photo-4484155.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+
+const bannerImage2 =
+  "https://images.pexels.com/photos/4604662/pexels-photo-4604662.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+
+const bannerImage3 =
+  "https://images.pexels.com/photos/4254135/pexels-photo-4254135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
 
 export const SliderContext = createContext();
 
@@ -10,7 +18,7 @@ export const SliderProvider = () => {
     {
       id: 1,
       title: "Tracking App",
-      heading: "Giving your hunger a new option",
+      heading: "Our Big Warehouse",
       desc: "Bid goodbye to your usual boring meals and say hello to diverse exotic options from thousands of restaurants.",
       bgImageURL: bannerImage1,
     },
@@ -28,7 +36,7 @@ export const SliderProvider = () => {
       title: "Tracking App",
       heading: "Giving your hunger a new option",
       desc: "Bid goodbye to your usual boring meals and say hello to diverse exotic options from thousands of restaurants.",
-      bgImageURL: bannerImage1,
+      bgImageURL: bannerImage3,
     },
   ]);
 

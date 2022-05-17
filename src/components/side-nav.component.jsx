@@ -7,9 +7,10 @@ import {
   SupportIcon,
   MapMarkerIcon,
   InformationIcon,
+  ChatIcon,
 } from "./icons.component";
 
-const SideNav = () => {
+const SideNav = ({ removeComponent }) => {
   const [indic, setIndic] = useState(2.5);
   const [mobIndic, setMobIndic] = useState(16.6);
   const [isMobView, setIsMobView] = useState(false);
@@ -22,7 +23,10 @@ const SideNav = () => {
       setIndic(2.5);
       setMobIndic(16.6);
     }
-    if (history.location.pathname === "/about") {
+    if (
+      history.location.pathname === "/about" ||
+      history.location.pathname === "/chat"
+    ) {
       setIndic(23.2);
       setMobIndic(33.4);
     }
@@ -44,109 +48,135 @@ const SideNav = () => {
   }, [history]);
 
   useEffect(() => {
+    const check = (e) => {
+      setIsMobView(e);
+      setMobileNav(e);
+    };
+
     if (window.innerWidth <= 600) {
-      setIsMobView(true);
-      setMobileNav(true);
+      check(true);
     } else {
-      setIsMobView(false);
-      setMobileNav(false);
+      check(false);
     }
   }, []);
 
   return (
-    <div className={`${mobileNav ? "side-nav-mob" : "side-nav"}`}>
-      <ul className="side-nav-bar">
-        {isMobView ? (
-          <div className="indic" style={{ left: `${mobIndic}%` }}></div>
-        ) : (
-          <div className="indic" style={{ top: `${indic}%` }}></div>
-        )}
-        <Link to="/">
-          <li
-            className={`nav-links ${
-              history.location.pathname === "/" ? "active" : ""
-            }`}
-            onClick={() => {
-              setIndic(2.5);
-              setMobIndic(16.6);
-            }}
-          >
-            <div className="icon">
-              <HomeIcon />
-            </div>
-            <div className="name">Home</div>
-          </li>
-        </Link>
+    <>
+      {removeComponent ? (
+        <div className={`${mobileNav ? "side-nav-mob" : "side-nav"}`}>
+          <ul className="side-nav-bar">
+            {isMobView ? (
+              <div className="indic" style={{ left: `${mobIndic}%` }}></div>
+            ) : (
+              <div className="indic" style={{ top: `${indic}%` }}></div>
+            )}
+            <Link to="/">
+              <li
+                className={`nav-links ${
+                  history.location.pathname === "/" ? "active" : ""
+                }`}
+                onClick={() => {
+                  setIndic(2.5);
+                  setMobIndic(16.6);
+                }}
+              >
+                <div className="icon">
+                  <HomeIcon />
+                </div>
+                <div className="name">Home</div>
+              </li>
+            </Link>
 
-        <Link to="/about">
-          <li
-            className={`nav-links ${
-              history.location.pathname === "/about" ? "active" : ""
-            }`}
-            onClick={() => {
-              setIndic(23.2);
-              setMobIndic(33.4);
-            }}
-          >
-            <div className="icon">
-              <InformationIcon />
-            </div>
-            <div className="name">About</div>
-          </li>
-        </Link>
+            {mobileNav ? (
+              <Link to="/chat">
+                <li
+                  className={`nav-links ${
+                    history.location.pathname === "/chat" ? "active" : ""
+                  }`}
+                  onClick={() => {
+                    setIndic(23.2);
+                    setMobIndic(33.4);
+                  }}
+                >
+                  <div className="icon">
+                    <ChatIcon />
+                  </div>
+                  <div className="name">Chat</div>
+                </li>
+              </Link>
+            ) : (
+              <Link to="/about">
+                <li
+                  className={`nav-links ${
+                    history.location.pathname === "/about" ? "active" : ""
+                  }`}
+                  onClick={() => {
+                    setIndic(23.2);
+                    setMobIndic(33.4);
+                  }}
+                >
+                  <div className="icon">
+                    <InformationIcon />
+                  </div>
+                  <div className="name">About</div>
+                </li>
+              </Link>
+            )}
 
-        <Link to="/map">
-          <li
-            className={`nav-links ${
-              history.location.pathname === "/map" ? "active" : ""
-            }`}
-            onClick={() => {
-              setIndic(44.2);
-              setMobIndic(50);
-            }}
-          >
-            <div className="icon">
-              <MapMarkerIcon />
-            </div>
-            <div className="name">Map</div>
-          </li>
-        </Link>
+            <Link to="/map">
+              <li
+                className={`nav-links ${
+                  history.location.pathname === "/map" ? "active" : ""
+                }`}
+                onClick={() => {
+                  setIndic(44.2);
+                  setMobIndic(50);
+                }}
+              >
+                <div className="icon">
+                  <MapMarkerIcon />
+                </div>
+                <div className="name">Map</div>
+              </li>
+            </Link>
 
-        <Link to="/blog">
-          <li
-            className={`nav-links ${
-              history.location.pathname === "/blog" ? "active" : ""
-            }`}
-            onClick={() => {
-              setIndic(64.6);
-              setMobIndic(66.6);
-            }}
-          >
-            <div className="icon">
-              <SupportIcon />
-            </div>
-            <div className="name">Blog</div>
-          </li>
-        </Link>
+            <Link to="/blog">
+              <li
+                className={`nav-links ${
+                  history.location.pathname === "/blog" ? "active" : ""
+                }`}
+                onClick={() => {
+                  setIndic(64.6);
+                  setMobIndic(66.6);
+                }}
+              >
+                <div className="icon">
+                  <SupportIcon />
+                </div>
+                <div className="name">Blog</div>
+              </li>
+            </Link>
 
-        <Link to="/contact">
-          <li
-            className={`nav-links ${
-              history.location.pathname === "/contact" ? "active" : ""
-            }`}
-            onClick={() => {
-              setIndic(85.1);
-              setMobIndic(83.4);
-            }}
-          >
-            <div className="icon">
-              <ContactIcon />
-            </div>
-            <div className="name">Contact</div>
-          </li>
-        </Link>
-      </ul>
-    </div>
+            <Link to="/contact">
+              <li
+                className={`nav-links ${
+                  history.location.pathname === "/contact" ? "active" : ""
+                }`}
+                onClick={() => {
+                  setIndic(85.1);
+                  setMobIndic(83.4);
+                }}
+              >
+                <div className="icon">
+                  <ContactIcon />
+                </div>
+                <div className="name">Contact</div>
+              </li>
+            </Link>
+          </ul>
+        </div>
+      ) : null}
+    </>
   );
 };
 
