@@ -12,6 +12,8 @@ const SignUpFormRider = () => {
     confirmPassword: "",
     dateOfBirth: "",
     address: "",
+    licenseSnap: "",
+    citezenshipNumber: "",
   });
 
   const [changeType, setChangeType] = useState("text");
@@ -25,17 +27,15 @@ const SignUpFormRider = () => {
   };
 
   const slidePrev = (e) => {
-    e.preventDefault();
-    setMove(0);
+    setMove(e);
   };
 
   const slideNext = (e) => {
-    e.preventDefault();
-    setMove(100);
+    setMove(e);
   };
 
   return (
-    <div className="sign-up-form">
+    <div className="sign-up-form rider-forms">
       <h4>Sign Up as Rider</h4>
 
       <form action="">
@@ -74,7 +74,15 @@ const SignUpFormRider = () => {
             />
 
             <div className="btn-group">
-              <button onClick={(e) => slideNext(e)}>Next</button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  slideNext(100);
+                }}
+              >
+                Next
+              </button>
             </div>
           </div>
 
@@ -113,7 +121,53 @@ const SignUpFormRider = () => {
             />
 
             <div className="btn-group">
-              <button onClick={(e) => slidePrev(e)}>Prev</button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  slidePrev(0);
+                }}
+              >
+                Prev
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  slideNext(200);
+                }}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+
+          <div className="form">
+            <FormInputSignInSignUp
+              type="number"
+              name="citezenshipNumber"
+              label="Citezenship Number*"
+              handleChange={handleChange}
+              value={formValues.citezenshipNumber}
+            />
+
+            <FormInputSignInSignUp
+              type="file"
+              name="licenseSnap"
+              label="License Snap*"
+              handleChange={handleChange}
+              value={formValues.licenseSnap}
+            />
+
+            <div className="btn-group">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  slidePrev(100);
+                }}
+              >
+                Prev
+              </button>
               <button>Submit</button>
             </div>
           </div>
