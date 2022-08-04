@@ -1,0 +1,493 @@
+$main: #7775E4
+$pri: #BFBEFF
+$dark: #000000
+$light: #FFFFFF
+$para: #333333
+
+@mixin flex($justify)
+  display: flex
+  justify-content: $justify
+  align-items: center
+
+@mixin grid($columns)
+  display: grid
+  grid-template-columns: $columns
+  grid-gap: 20px
+
+@mixin image()
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+
+@mixin shrinkLabel()
+  top: -12px
+  left: 5px
+  transform: translateY(-50%) scale(.8)
+
+@mixin btnHover()
+  background-color: #6966ff
+  box-shadow: 0 0 4px rgba(#6966ff, .2)
+
+@mixin trans()
+  transition: all .5s cubic-bezier(0,1,0,1)
+
+@media only screen and (max-width: 1300px)
+  .wrapper
+    max-width: 1000px
+
+    &.noSpace
+      max-width: auto
+      padding: 0
+
+  .all-pages
+    width: 75%
+
+  .side-nav
+    width: 24%
+
+  /**********    feature    **********/
+  .feature
+    .card-list
+      @include grid($columns: 1fr 1fr)
+
+  /**********    how-to-use    **********/
+  .how-to-use
+    @include grid($columns: 1fr)
+
+    .image
+      img
+        height: 100%
+        width: 100%
+        object-fit: cover
+        border-radius: 20px
+
+  /**********    earn-with-us    **********/
+  .earn-with-us
+    @include grid($columns: 1fr)
+
+  /**********    blogpage    **********/
+  .blogpage
+    .blog
+      .blog-list
+        @include grid($columns: 1fr 1fr)
+
+@media only screen and (max-width: 800px)
+  .wrapper
+    max-width: 600px
+
+    &.noSpace
+      max-width: auto
+      padding: 0
+
+  .all-pages
+    width: 70%
+
+  .side-nav
+    width: 28%
+
+  /**********    header    **********/
+  header
+    @include grid($columns: .2fr 1fr 1fr)
+
+    .profile
+      .profile-details
+        .others
+          display: none
+
+  /**********    feature    **********/
+  .feature
+    .card-list
+      @include grid($columns: 1fr )
+
+  /**********    about-us    **********/
+  .about-page
+    padding: 1rem
+
+  /**********    page-banner    **********/
+  .page-banner
+    h4
+      font-size: 16px
+      font-weight: 700
+
+    h2
+      font-size: 30px
+      font-weight: 400
+
+  /**********    full-card    **********/
+  .full-card
+    @include grid($columns: 1fr)
+    margin: 1rem 0 3rem
+
+    .details
+      h3
+        font-size: 20px
+
+      p
+        font-size: 16px
+
+    &.rotate
+      @include grid($columns: 1fr)
+      margin-bottom: 0
+
+      img
+        grid-area: 1
+
+  /**********    blogpage    **********/
+  .blogpage
+    .blog
+      .blog-list
+        @include grid($columns: 1fr)
+
+  /**********    contact-page    **********/
+  .contact-page
+    @include grid($columns: 1fr)
+
+@media only screen and (max-width: 600px)
+  .wrapper
+    max-width: 450px
+    padding: 0 1rem
+
+    &.noSpace
+      max-width: auto
+      padding: 0
+
+  /**********    section    **********/
+  .section
+    display: block
+
+  .all-pages
+    width: 100%
+
+  /**********    header    **********/
+  header
+    @include grid($columns: .2fr 1fr .2fr)
+    grid-gap: 10px
+
+    .das
+      display: none
+
+    .sign-up-btn
+      .icon
+        pointer-events: auto
+
+      span
+        display: none
+
+      .pointer
+        right: 23px
+
+      ul
+        li
+          span
+            display: block
+            color: $dark
+
+    .profile
+      .profile-details
+        .others
+          display: none
+
+  .side-nav-mob
+    position: fixed
+    bottom: 6px
+    left: 50%
+    transform: translateX(-50%)
+    width: 95%
+    background-color: rgba($dark, .7)
+    backdrop-filter: blur(10px)
+    z-index: 10
+    height: 60px
+    border-radius: 20px
+
+    .indic
+      position: absolute
+      top: -5%
+      transform: translate(-50%, -50%)
+      height: 50px
+      width: 50px
+      border-radius: 50%
+      background-color: $main
+      @include trans()
+
+    .side-nav-bar
+      @include flex($justify: space-evenly)
+      list-style: none
+      height: 100%
+
+      a
+        height: 100%
+
+      .nav-links
+        position: relative
+        height: 100%
+
+        &.active
+          .icon
+            top: -5%
+            height: 30px
+            width: 30px
+
+            svg
+              height: 40px
+              width: 40px
+
+              path
+                fill: $light
+
+          .name
+            opacity: 1
+            top: 60%
+
+        .icon
+          position: absolute
+          left: 50%
+          top: 50%
+          transform: translate(-50%, -50%)
+          height: 20px
+          width: 20px
+          @include flex($justify: center)
+          @include trans()
+          z-index: 2
+
+          svg
+            path
+              fill: $light
+              @include trans()
+
+        .name
+          position: absolute
+          left: 50%
+          top: 50%
+          transform: translate(-50%, -50%)
+          opacity: 0
+          font-size: 16px
+          color: $light
+          text-align: center
+          @include trans()
+          z-index: 1
+
+  /**********    banner    **********/
+  .banner
+    .slider
+      .image
+        .content
+          position: absolute
+          left: 0
+          padding: 1rem
+          top: 50%
+
+  // .side-nav
+  //   position: fixed
+  //   bottom: 0
+  //   left: 50%
+  //   transform: translateX(-50%)
+  //   width: 90%
+
+  //   .side-nav-bar
+  //     @include flex($justify: space-evenly)
+
+  /**********    footer    **********/
+  footer
+    margin-bottom: 5rem
+
+  /**********    notification-page    **********/
+  .notification-page
+    padding: 1rem
+
+    .title
+      font-size: 30px
+
+    .notifications-list
+      .item
+        @include grid($columns: .1fr 1fr)
+
+        .details
+          .desc
+            font-size: 16px
+            line-height: 1.4rem
+
+  /******************    mobile    ******************/
+
+  /**********    mobile-section    **********/
+  .mobile-section
+    padding: 1rem 0 0
+
+  /**********    mobile-title    **********/
+  .mobile-title
+    margin-bottom: 1rem
+    @include flex($justify: space-between)
+
+    h3
+      font-size: 20px
+      font-weight: 600
+      color: $dark
+
+    h6
+      @include flex($justify: flex-end)
+      color: rgba($dark, .6)
+      font-size: 14px
+
+      i
+        margin-left: 5px
+        font-size: 12px
+
+  /**********    mobile-slider    **********/
+  .mobile-slider
+    overflow: hidden
+
+    &.full-view-slider
+      .mySwiper
+        width: 100%
+
+    .mySwiper
+      width: 500px
+
+    .card
+      border-radius: 20px
+      overflow: hidden
+
+      .image
+        height: 170px
+        width: 100%
+        @include image()
+
+      &.with-data
+
+        .image
+          position: relative
+
+          &:after
+            content: ''
+            position: absolute
+            left: 0
+            top: 0
+            bottom: 0
+            right: 0
+            background: linear-gradient(0, rgba($dark, .6), rgba($dark, .0))
+            z-index: 1
+
+          .content
+            position: absolute
+            left: 0
+            bottom: 0
+            padding: .8rem
+            z-index: 2
+
+            .name
+              font-size: 15px
+              color: $light
+              margin-bottom: 6px
+
+            .price
+              color: #ff8b8b
+              font-size: 12px
+              font-weight: 600
+
+  /**********    mobile-homepage    **********/
+  .whats-new
+    background-color: $light
+    padding: 1rem
+    border-radius: 20px
+
+    .cate-opt
+      @include flex($justify: flex-start)
+      list-style: none
+      margin-bottom: 1rem
+
+      li
+        margin-right: 5px
+        padding: .3rem .6rem
+        font-size: 12px
+        background-color: rgba($dark, .06)
+        color: $dark
+        border: 1.5px solid rgba($dark, .4)
+        border-radius: 6px
+
+        &.active
+          background-color: #807ce7
+          color: $light
+          border: 2px solid #6662c7
+
+  /**********    sign-up, login    **********/
+  .sign-up, .login
+    padding: 0 1rem
+
+  /**********    footer    **********/
+  footer
+    display: none
+
+  /**********    chat    **********/
+  .chat-page
+    .chat-list
+      padding: .7rem .5rem
+      background-color: rgba($light, .8)
+      border-radius: 20px
+      max-height: 77vh
+      overflow-y: auto
+
+      .chat
+        padding-bottom: 1rem
+        @include grid($columns: 45px 1fr)
+
+        &:nth-last-child(1)
+          margin-bottom: 0
+
+        &.active
+          .details
+            @include flex($justify: space-between)
+
+            .name
+              font-weight: 600
+
+            .last-message
+              font-weight: 600
+              color: rgba($dark, 1)
+
+            .time
+              font-weight: 600
+              color: rgba($dark, .6)
+
+        .user-image
+          height: 54px
+          width: 54px
+          border-radius: 50%
+          @include image()
+          position: relative
+
+          .dot
+            position: absolute
+            top: 85%
+            left: 85%
+            transform: translate(-50%, -50%)
+            height: 14px
+            width: 14px
+            border: 2px solid rgba($light, .9)
+            background-color: #0bd104
+            border-radius: 50%
+
+        .details
+          @include flex($justify: space-between)
+
+          .name
+            font-size: 17px
+            margin-bottom: .2rem
+            color: $dark
+
+          .last-message
+            font-size: 14px
+            @include flex($justify: space-between)
+            color: rgba($dark, .7)
+
+            span
+              display: none
+
+              &:nth-last-child(1)
+                display: block
+
+          .time
+            font-size: 12px
+            font-weight: 400
+            color: rgba($dark, .6)
+            margin-right: 10px
+
+  .message-layout

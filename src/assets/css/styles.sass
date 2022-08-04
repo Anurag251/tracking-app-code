@@ -1,0 +1,1337 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap')
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: 'Lato', sans-serif
+  border: none
+  outline: none
+  background: none
+  text-decoration: none
+
+$main: #00719C
+$pri: #BFBEFF
+$dark: #000000
+$light: #FFFFFF
+$para: #333333
+
+@mixin flex($justify)
+  display: flex
+  justify-content: $justify
+  align-items: center
+
+@mixin grid($columns)
+  display: grid
+  grid-template-columns: $columns
+  grid-gap: 20px
+
+@mixin image()
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+
+@mixin shrinkLabel()
+  top: -12px
+  left: 5px
+  transform: translateY(-50%) scale(.8)
+
+@mixin btnHover()
+  // transform: scale(1.02) translateY(-1px)
+  background-color: #6966ff
+  box-shadow: 0 0 4px rgba(#6966ff, .2)
+
+@mixin trans()
+  transition: all .5s cubic-bezier(0,1,0,1)
+
+/**********    bg-for-close    **********/
+.bg-for-close
+  position: fixed
+  left: 0
+  top: 0
+  height: 100%
+  width: 100%
+  background-color: rgba($dark, .01)
+  z-index: 2
+
+/**********    mobile-popup    **********/
+.mobile-popup
+  position: absolute
+  top: 40px
+  right: 5px
+  background-color: $light
+  padding: .5rem 1rem
+  border-radius: 10px
+  box-shadow: 0 4px 10px rgba($dark, .2)
+  pointer-events: none
+  opacity: 0
+  z-index: 10
+  transition: all .45s cubic-bezier(0,1,0,1)
+
+  &.active
+    top: 60px
+    opacity: 1
+    pointer-events: auto
+
+  .pointer
+    position: absolute
+    right: 15px
+    top: -3px
+    transform: rotate(45deg)
+    height: 10px
+    width: 10px
+    border-radius: 2px
+    background-color: $light
+
+  .inner
+    cursor: pointer
+    position: relative
+    z-index: 10
+
+    ul
+      li
+        @include flex($justify: center)
+        line-height: 3rem
+        border-bottom: 1px solid rgba($dark, .2)
+
+        &:nth-last-child(1)
+          border-bottom: none
+
+        &:hover
+          svg
+            path
+              fill: $main
+
+          span
+            color: $main
+
+        svg
+          path
+            fill: $dark
+
+        span
+          font-size: 18px
+          margin-right: 5px
+
+/**********    loading    **********/
+.loading
+  height: 100%
+  width: 100%
+  @include flex($justify: center)
+
+  &.fullPage
+    background-color: #292929
+    height: 100vh
+
+  .loading-area
+    position: relative
+    height: 50px
+    width: 50px
+    @include flex($justify: center)
+    border-radius: 50%
+    animation: spin 2s ease-in-out infinite
+
+    @keyframes spin
+      0%
+        transform: rotate(0deg)
+
+      100%
+        transform: rotate(360deg)
+
+    p
+      position: absolute
+      left: 50%
+      top: 150%
+      transform: translate(-50%, -50%)
+      color: $light
+
+    .circle
+      position: absolute
+      height: 100%
+      width: 100%
+      border-radius: 50%
+      animation: rotate 1s ease-in-out infinite
+
+      @keyframes rotate
+        0%
+          transform: translate(-50%, -50%) rotate(0deg)
+          // border-color: $main
+          border-color: #FF9900
+
+        25%
+          transform: translate(-50%, -50%) rotate(90deg)
+          // border-color: #8c00ff
+          border-color: #FFE600
+
+        50%
+          transform: translate(-50%, -50%) rotate(180deg)
+          // border-color: #00e1ff
+          border-color: #DBFF00
+
+        75%
+          transform: translate(-50%, -50%) rotate(270deg)
+          // border-color: #3bfd00
+          border-color: #ADFF00
+
+        100%
+          transform: translate(-50%, -50%) rotate(360deg)
+          // border-color: #ffe600
+          border-color: #70FF00
+
+      &:nth-child(1)
+        left: 20%
+        top: 20%
+        transform: translate(-50%, -50%)
+        border-left-width: 3px
+        border-left-style: solid
+
+      &:nth-child(2)
+        left: 80%
+        top: 20%
+        transform: translate(-50%, -50%)
+        border-right-width: 3px
+        border-right-style: solid
+        animation-delay: .2s
+
+      &:nth-child(3)
+        left: 50%
+        top: 80%
+        transform: translate(-50%, -50%)
+        border-bottom-width: 3px
+        border-bottom-style: solid
+        animation-delay: .1s
+
+/**********    app    **********/
+.app
+  @include image()
+  background-attachment: fixed
+  padding: .01rem 0
+  min-height: 100vh
+
+/**********    wrapper    **********/
+.wrapper
+  max-width: 1400px
+  margin: 0 auto
+  padding: 0 2rem
+
+  &.noSpace
+    max-width: auto
+    padding: 0
+
+/**********    section    **********/
+section
+  padding: 0 20px
+
+  padding-bottom: 3rem
+
+  &.no-padding
+    padding: 3rem 0
+
+.section
+  @include flex($justify: center)
+  align-items: flex-start
+  margin-top: 6px
+
+/**********    custom-button    **********/
+.custom-button
+  height: 40px
+  padding: 0 1.5rem
+  @include flex($justify: center)
+  border-radius: 10px
+  font-size: 16px
+  color: $light
+  background-color: $main
+  cursor: pointer
+  @include trans()
+
+  &:hover
+    @include btnHover()
+
+    svg
+      transform: translateX(10px)
+
+  svg
+    transform: translateX(5px)
+    @include trans()
+
+/**********    header    **********/
+header
+  @include grid($columns: 1fr 1fr 1fr)
+  background-color: rgba($dark, .45)
+  backdrop-filter: blur(30px)
+  padding: .5rem
+  border-radius: 20px
+  position: sticky
+  top: 0
+  z-index: 10
+
+  .logo
+    height: 60px
+    width: 60px
+
+    img
+      width: 100%
+
+  .search
+    @include flex($justify: center)
+
+    form
+      height: 50px
+      max-width: 300px
+      width: 100%
+      border-radius: 20px
+      background-color: rgba($light, .10)
+      position: relative
+
+      input
+        width: 100%
+        height: 100%
+        padding-left: 3rem
+        color: $light
+        font-size: 18px
+
+        &::placeholder
+          color: rgba($light, 8)
+
+      .search-btn
+        position: absolute
+        left: 10px
+        top: 50%
+        transform: translateY(-50%)
+        height: 28px
+        width: 28px
+        @include flex($justify: center)
+
+  .das
+    height: 20px
+    width: 1px
+    background-color: rgba($light, .4)
+    margin: 0 1rem
+
+  .sign-up-btn
+    @include flex($justify: flex-end)
+
+    .icon
+      height: 31px
+      width: 31px
+      border-radius: 50%
+      background-color: $dark
+      @include flex($justify: center)
+      margin-right: 10px
+      pointer-events: none
+
+    span
+      font-size: 18px
+      color: $light
+      @include flex($justify: center)
+
+      &.su
+        text-decoration: underline
+
+      svg
+        margin-left: 5px
+
+  .profile
+    @include flex($justify: flex-end)
+    position: relative
+
+    .notifications
+      position: relative
+      height: 22px
+      width: 22px
+      @include flex($justify: center)
+
+      .dot
+        position: absolute
+        right: 0
+        top: 0
+        height: 10px
+        width: 10px
+        border-radius: 50%
+        background-color: #FF0000
+
+      img
+        width: 80%
+
+    .profile-details
+      @include flex($justify: center)
+      margin-left: 1rem
+
+      .profile-image
+        height: 50px
+        width: 50px
+        border-radius: 50%
+        object-fit: cover
+
+      .others
+        text-align: right
+        margin: 0 10px
+
+        .name
+          font-size: 16px
+          font-weight: 500
+          color: $light
+
+        .greet
+          font-size: 14px
+          font-weight: 400
+          color: #dcdcdc
+
+/**********    body    **********/
+.all-pages
+  width: 80%
+
+/**********    side-nav    **********/
+.side-nav
+  background-color: rgba($dark, .45)
+  border-radius: 20px
+  position: sticky
+  top: 80px
+  width: 18%
+  margin-right: 2%
+
+  .side-nav-bar
+    position: relative
+
+    .indic
+      position: absolute
+      left: 0
+      top: 0
+      height: 43px
+      border-radius: 10px
+      width: 2px
+      background-color: $pri
+      @include trans()
+
+    .nav-links
+      height: 43px
+      position: relative
+      @include flex($justify: flex-start)
+      margin: 10px 0
+      cursor: pointer
+      border-radius: 10px
+      padding: 2rem 0
+
+      &:hover
+        background-color: rgba($dark, .2)
+
+      &.active
+        background-color: rgba($dark, .2)
+        .icon
+          svg
+            path
+              fill: $pri
+        .name
+          color: $pri
+
+      .icon
+        height: 24px
+        width: 24px
+        @include flex($justify: center)
+        margin: 0 15px
+
+        svg
+          height: 24px
+          width: 24px
+
+          path
+            @include trans()
+
+      .name
+        font-size: 18px
+        color: $light
+        @include trans()
+
+/**********    homepage    **********/
+.homepage
+  background-color: rgba($light, .75)
+  backbrop-filter: blur(25px)
+  border-radius: 20px
+  width: 100%
+
+/**********    banner    **********/
+.banner
+  width: 100%
+  position: relative
+
+  .mySwiper
+    width: 100%
+
+    .swiper-slide
+      width: 100%
+
+  .slider
+    width: 100%
+
+    .image
+      height: 350px
+      width: 100%
+      border-radius: 20px
+      overflow: hidden
+      position: relative
+
+      &::after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        background-color: rgba($dark, .4)
+        z-index: 1
+
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+      .content
+        position: absolute
+        left: 30px
+        top: 50%
+        transform: translateY(-50%)
+        @include flex($justify: flex-start)
+        flex-direction: column
+        align-items: flex-start
+        color: $light
+        z-index: 3
+
+        h4
+          font-size: 18px
+          font-weight: 600
+          line-height: 43px
+          line-height: 10px
+          // text-shadow: 0 1px 3px rgba($light, .9)
+
+        h1
+          font-size: 36px
+          font-weight: 500
+          max-width: 300px
+          margin-bottom: 1rem
+          // text-shadow: 0 1px 3px rgba($light, .9)
+
+        p
+          font-size: 18px
+          max-width: 400px
+          margin-bottom: 30px
+          // text-shadow: 0 1px 3px rgba($light, .9)
+
+/**********    feature    **********/
+.feature
+  .card-list
+    @include grid($columns: 1fr 1fr 1fr)
+
+    .card
+      padding: 1rem
+      position: relative
+      background-color: $light
+      padding-top: 5rem
+      margin-top: 10rem
+      border-radius: 20px
+      box-shadow: 0px 4px 17px rgba($dark, 0.10)
+
+      img
+        position: absolute
+        left: 50%
+        top: -20%
+        transform: translate(-50%, -50%)
+        width: 90%
+        height: 200px
+        object-fit: cover
+        border-radius: 20px
+
+      .name
+        font-size: 24px
+        margin-bottom: 1rem
+
+      .desc
+        font-size: 18px
+        color: $para
+
+/**********    how-to-use    **********/
+.how-to-use
+  @include grid($columns: 1fr 1fr)
+
+  .details
+    .title-section
+      @include flex($justify: flex-start)
+      margin-bottom: 2rem
+
+      .icon
+        height: 90px
+        width: 90px
+        border-radius: 18px
+        background-color: $light
+        @include flex($justify: center)
+        margin-right: 10px
+
+      .info
+        p
+          font-size: 24px
+
+    .procress
+      .step
+        margin-bottom: 2rem
+        .sn
+          font-size: 24px
+          font-weight: 300
+          margin-bottom: 10px
+
+        .name
+          font-size: 24px
+          font-weight: 700
+          margin-bottom: 10px
+
+        p
+          font-size: 18px
+          margin-bottom: 10px
+
+  .image
+    img
+      height: 80%
+      width: 100%
+      object-fit: cover
+      border-radius: 20px
+
+/**********    earn-with-us    **********/
+.earn-with-us
+  @include grid($columns: 1fr 1fr)
+
+  .image
+    img
+      height: 250px
+      width: 100%
+      object-fit: cover
+      border-radius: 20px
+
+  .name
+    font-size: 24px
+    font-weight: 700
+    margin-bottom: 15px
+
+  ul
+    padding-left: 2rem
+    li
+      margin-bottom: 1rem
+
+/**********    footer    **********/
+footer
+  padding: 1rem
+  background-color: #141414
+  @include flex($justify: space-between)
+  margin-top: 12px
+  border-radius: 15px
+
+  h4
+    font-size: 18px
+    line-height: 22px
+    color: #C6C6C6
+    font-weight: 400
+
+  .social-links
+    @include flex($justify: flex-end)
+
+    .icon
+      height: 24px
+      width: 24px
+      border-radius: 6px
+      background-color: #383838
+      @include flex($justify: center)
+      margin-left: 10px
+
+      i
+        color: #ebebeb
+        font-size: 15px
+
+/**********    about-us    **********/
+.about-page
+  background-color: $light
+  padding: 2rem
+  border-radius: 20px
+
+/**********    page-banner    **********/
+.page-banner
+  h4
+    font-size: 18px
+    font-weight: 700
+
+  h2
+    font-size: 48px
+    font-weight: 400
+
+/**********    full-card    **********/
+.full-card
+  @include grid($columns: 1fr 1.2fr)
+  margin-top: 2rem
+
+  &.rotate
+    @include grid($columns: 1.2fr 1fr)
+
+  img
+    height: 240px
+    width: 100%
+    border-radius: 20px
+    object-fit: cover
+
+  .details
+    h3
+      margin-bottom: 5px
+      font-size: 24px
+
+    p
+      font-size: 18px
+      color: $para
+      line-height: 1.5rem
+      text-align: justify
+
+/**********    custom-input    **********/
+.custom-input
+  height: 60px
+  border-radius: 10px
+  position: relative
+  margin: 2rem 0
+
+  .form-input-label
+    position: absolute
+    left: 15px
+    top: 50%
+    transform: translateY(-50%)
+    font-size: 18px
+    color: #6F6F6F
+    z-index: 1
+    @include trans()
+
+    &.shrink
+      @include shrinkLabel()
+
+  .input
+    height: 100%
+    width: 100%
+    background-color: $light
+    border: 2px solid #D3D3D3
+    border-radius: 10px
+    font-size: 18px
+    padding-left: 15px
+
+    &:focus ~ .form-input-label
+      @include shrinkLabel()
+
+  &.custom-text-area
+    height: 150px
+
+    .input
+      padding-top: .8rem
+
+    .form-input-label
+      top: 18%
+
+/**********    error    **********/
+.error
+  position: fixed
+  left: 50%
+  top: 15%
+  transform: translate(-50%, -50%)
+  max-width: 600px
+  padding: .5rem 1rem
+  border-radius: 10px
+  background-color: rgba(#ff0000, .8)
+  color: $light
+  font-size: 18px
+  text-align: center
+  z-index: 30
+  pointer-events: none
+
+/**********    contact-page    **********/
+.contact-page
+  padding: 1.5rem
+  background-color: rgba($dark, .36)
+  backdrop-filter: blur(25px)
+  border-radius: 20px
+  @include grid($columns: 2fr 1fr)
+  align-items: flex-start
+
+  .contact-form
+    padding: 1.5rem
+    background-color: rgba($light, .84)
+    border-radius: 20px
+
+    h3
+      font-size: 30px
+      margin: 1rem 0 .4rem
+
+/**********    contact-infos    **********/
+.contact-infos
+  padding: 1rem
+  background-color: $main
+  border-radius: 20px
+  color: $light
+
+  h3
+    font-size: 24px
+    margin-bottom: .7rem
+
+  h5
+    position: sticky
+    // top:
+    font-size: 18px
+    margin-bottom: .6rem
+    font-weight: 400
+
+/**********    sign-up, login    **********/
+
+.login-page
+  @include image()
+
+.sign-up, .login
+  @include image()
+  min-height: 100vh
+  @include flex($justify: center)
+
+  .inner
+    max-width: 420px
+    width: 100%
+
+    .top-sec
+      @include flex($justify: space-between)
+      align-items: flex-end
+      margin-bottom: 5px
+
+      .back-btn, .home-btn
+        height: 42px
+        width: 42px
+        border-radius: 50%
+        background-color: $dark
+        @include flex($justify: center)
+
+    .sign-nav
+      background-color: rgba($dark, .44)
+      border-radius: 15px
+      position: relative
+      height: 50px
+      margin-bottom: 5px
+
+      .indicator
+        position: absolute
+        top: 50%
+        transform: translate(-50%, -50%)
+        width: 25%
+        height: 80%
+        border-radius: 10px
+        background-color: $main
+        @include trans()
+        z-index: 1
+
+      ul
+        @include flex($justify: space-around)
+        height: 100%
+        position: relative
+        z-index: 2
+        padding: 0
+        margin: 0
+        list-style: none
+        color: $light
+        font-weight: 500
+
+        li
+          padding: 1rem
+          cursor: pointer
+          font-size: 18px
+
+    .for-user, .for-rider, .for-vender
+      opacity: 0
+      @include trans()
+      transition-delay: 1s
+
+    .sign-up-form, .login-form
+      padding: 2rem 0
+      background-color: rgba($dark, .44)
+      border-radius: 20px
+      overflow: hidden
+
+      &.rider-forms
+        .form-slide
+          width: 300%
+
+      .form
+        padding: 0 1.5rem
+
+      .form-slide
+        width: 200%
+        display: flex
+        @include trans()
+
+        .form
+          width: 50%
+          padding: 0 1.5rem
+
+      h4
+        font-size: 24px
+        color: $light
+        font-weight: 600
+        margin-bottom: 2rem
+        padding: 0 1.5rem
+
+      .form-input
+        height: 40px
+        width: 100%
+        position: relative
+        margin-bottom: 2rem
+
+        input
+          height: 100%
+          width: 100%
+          font-size: 18px
+          padding-left: 5px
+          color: $light
+
+          &:focus ~ .form-input-label
+            @include shrinkLabel()
+
+        span
+          position: absolute
+          top: 50%
+          left: 5px
+          transform: translateY(-50%)
+          font-size: 16px
+          color: #c6c6c6
+          pointer-events: none
+          @include trans()
+
+          &.shrink
+            @include shrinkLabel()
+
+        .line
+          position: absolute
+          bottom: 0
+          left: 50%
+          transform: translateX(-50%)
+          height: 2px
+          width: 100%
+          background-color: rgba($light,.26)
+
+          &.glow
+            &::after
+              width: 100%
+
+          &::after
+            content: ''
+            position: absolute
+            bottom: 0
+            left: 50%
+            transform: translateX(-50%)
+            height: 2px
+            width: 0%
+            background-color: rgba($light,.7)
+            @include trans()
+
+      .btn-group
+        @include flex($justify: space-between)
+
+        button
+          width: 100%
+          padding: .5rem 1rem
+          background-color: $main
+          font-size: 18px
+          color: $light
+          border-radius: 10px
+          cursor: pointer
+          margin: 0 5px
+
+          &:hover
+            @include btnHover()
+
+      .or
+        font-size: 16px
+        text-align: center
+        color: $light
+        position: relative
+        margin: 1.5rem
+
+        &::after
+          content: ''
+          position: absolute
+          left: 0
+          top: 50%
+          transform: translateY(50%)
+          height: 1px
+          width: 42%
+          background-color: rgba($light, .26)
+
+        &::before
+          content: ''
+          position: absolute
+          right: 0
+          top: 50%
+          transform: translateY(50%)
+          height: 1px
+          width: 42%
+          background-color: rgba($light, .26)
+
+      .social-icons
+        max-width: 250px
+        width: 100%
+        margin: 0 auto
+        @include flex($justify: space-between)
+
+        .icon
+          height: 35px
+          width: 35px
+          border-radius: 50%
+          background-color: $main
+          @include flex($justify: center)
+          color: $light
+          font-size: 18px
+          cursor: pointer
+
+          &:hover
+            @include btnHover()
+
+      .have-account
+        text-align: center
+        color: $light
+        margin-top: 1rem
+        font-size: 16px
+
+        span
+          cursor: pointer
+          color: $light
+          text-decoration: underline
+
+/**********    blogpage    **********/
+.blogpage
+  padding: 2rem
+  background-color: rgba($dark, .26)
+  border-radius: 20px
+
+  .title
+    font-size: 30px
+    font-weight: 600
+    color: $light
+    margin-bottom: 2rem
+
+  .blog
+    .blog-list
+      @include grid($columns: 1fr 1fr 1fr)
+
+      .blog-item
+        border-radius: 20px
+        overflow: hidden
+        background-color: $light
+        @include trans()
+
+        &:hover
+          box-shadow: 0 4px 10px rgba($dark, .2)
+          .image
+            img
+              transform: translateX(0) scale(1)
+              transition: .45s cubic-bezier(0,0,0,1)
+
+          .content
+            .blog-title
+              color: $main
+
+        .image
+          height: 200px
+          width: 100%
+          border-radius: 10px
+          overflow: hidden
+
+          img
+            width: 100%
+            height: 100%
+            object-fit: cover
+            transform: translateX(-30px) scale(1.3)
+
+        .content
+          padding: 1rem 1rem 1.5rem
+          border-radius: 20px
+
+          .date
+            color: rgba($dark,.6)
+            font-size: 12px
+            font-weight: 400
+            margin-bottom: 10px
+
+          .blog-title
+            font-size: 18px
+            font-weight: 600
+            color: $dark
+
+/**********    map    **********/
+.map
+  height: 400px
+  width: 100%
+
+/**********    notification-page    **********/
+.notification-page
+  padding: 2rem
+  background-color: $light
+  border-radius: 20px
+
+  .title
+    margin-bottom: 1rem
+
+  .notifications-list
+    @include flex($justify: flex-start)
+    flex-direction: column
+
+    .item
+      @include grid($columns: .1fr 5fr)
+      padding: 1.5rem 0
+      align-items: flex-start
+      border-bottom: 1px solid rgba($dark, .2)
+
+      &:nth-last-child(1)
+        border-bottom: none
+
+      .icon
+        height: 40px
+        width: 40px
+        border-radius: 50%
+        background-color: rgba($main, .3)
+        @include flex($justify: center)
+
+        svg
+          width: 60%
+          path
+            fill: $main
+
+      .details
+        .desc
+          font-size: 18px
+          color: $para
+          line-height: 1.7rem
+          margin-bottom: .6rem
+          text-align: justify
+
+        .date
+          font-size: 14px
+          color: rgba($dark, .5)
+          font-weight: 400
+
+.solutions
+  .title
+    font-size: 30px
+    margin-bottom: 2rem
+    text-align: center
+    font-weight: 600
+
+  .mySwiper
+    padding-bottom: 2rem
+
+  .item
+    height: 200px
+    width: 100%
+    position: relative
+    border-radius: 20px
+    overflow: hidden
+
+    &:hover
+      .image
+        transform: scale(1) translateX(0)
+
+      .details
+        p
+          max-height: 50px
+          opacity: 1
+          pointer-events: auto
+
+      &::after
+        background-image: linear-gradient(180deg, rgba($dark, .1), rgba($dark, .8))
+
+    .image
+      height: 100%
+      width: 100%
+      @include image()
+      transform: scale(1.3) translateX(-8px)
+      @include trans()
+
+    &::after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+      background-image: linear-gradient(180deg, rgba($dark, .0), rgba($dark, .6))
+      z-index: 1
+      @include trans()
+
+    .details
+      position: absolute
+      bottom: 0
+      left: 0
+      padding: .5rem
+      color: $light
+      z-index: 2
+
+      .name
+        font-size: 18px
+        margin-bottom: .4rem
+
+      p
+        max-height: 0
+        overflow-y: auto
+        height: 100%
+        font-size: 14px
+        opacity: 0
+        pointer-events: none
+        @include trans()
+
+.message-page
+  background-color: #323232
+  height: 100vh
+  padding: 1rem 10px
+  @include flex($justify: space-between)
+  align-items: flex-start
+  flex-direction: column
+
+  .chat-head
+    @include flex($justify: flex-start)
+    color: $light
+    margin-bottom: 1rem
+
+    .user-image
+      height: 40px
+      width: 40px
+      margin: 0 10px
+
+      img
+        height: 100%
+        width: 100%
+        border-radius: 50%
+        object-fit: cover
+
+    .user-name
+      font-size: 16px
+      font-weight: 500
+
+    .status
+      font-size: 12px
+      font-weight: 400
+
+  .message-input
+    width: 100%
+    height: 40px
+    background-color: #6F6F6F
+    border-radius: 4px
+    @include flex($justify: space-between)
+    margin-top: 1rem
+
+    input
+      width: 100%
+      height: 100%
+      padding: 0 1rem
+      font-size: 15px
+      color: $light
+
+      &::placeholder
+        color: rgba($light, .8)
+
+    .send-message-btn
+      padding: .1rem .6rem
+      font-size: 16px
+      font-weight: 600
+      text-transform: uppercase
+      color: #e7e7e7
+
+.message-section
+  max-height: 80vh
+  height: 100%
+  width: 100%
+  overflow-y: scroll
+
+.message-layout
+  width: 100%
+  @include flex($justify: flex-start)
+  flex-direction: column
+
+  .others-message, .your-message
+    width: 100%
+    @include flex($justify: flex-start)
+    align-items: flex-end
+    margin-bottom: 10px
+
+    .user-image
+      height: 30px
+      width: 30px
+      border-radius: 50%
+      @include image()
+      margin-right: 5px
+
+      &.noImage
+        display: none
+
+    .message-box
+      padding: .5rem
+      border-radius: 10px 10px 10px 0
+      background-color: #494949
+      max-width: 70vw
+
+      // &.my-message
+
+      .text-message
+        color: $light
+        font-size: 14px
+
+      .send-time
+        margin-top: 5px
+        color: rgba($light, .7)
+        font-size: 10px
+
+  .your-message
+    width: 100%
+    @include flex($justify: flex-end)
+
+    .message-box
+      border-radius: 10px 10px 0 10px
+      background-color: $main
+
+.testimonial
+  .title
+    font-size: 30px
+    font-weight: 600
+    color: $dark
+    margin-bottom: 2rem
+
+  .mySwiper
+    height: 100%
+    width: 100%
+    padding-bottom: 1rem
+
+    .swiper-slide
+      height: 100%
+      width: 100%
+
+  .item
+    padding: 1rem
+    @include flex($justify: center)
+    flex-direction: column
+
+    .image
+      margin-bottom: .8rem
+
+      img
+        height: 100px
+        width: 100px
+        border-radius: 50%
+        object-fit: cover
+        border: 3px solid $light
+        border-bottom: 3px solid $main
+
+    .name
+      font-size: 18px
+      margin: 10px 0 5px
+      font-weight: 600
+
+    .time
+      font-size: 14px
+      color: rgba($dark, .7)
+
+    .desc
+      max-height: 100px
+      overflow-y: auto
+      text-align: center
+      font-size: 15px
+      line-height: 1.2rem
+      color: rgba($dark, .8)
