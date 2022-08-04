@@ -108,7 +108,8 @@ const SideNav = ({ removeComponent }) => {
             </Link>
 
             {mobileNav ? (
-              <Link to="/chat">
+              <>
+                {/* <Link to="/notifications">
                 <li
                   className="nav-links"
                   onClick={() => {
@@ -119,9 +120,24 @@ const SideNav = ({ removeComponent }) => {
                   <div className="icon">
                     <ChatIcon />
                   </div>
-                  <div className="name">Chat</div>
+                  <div className="name">Notification</div>
                 </li>
-              </Link>
+              </Link> */}
+                <Link to="/about">
+                  <li
+                    className="nav-links"
+                    onClick={() => {
+                      setIndic(23.2);
+                      setMobIndic(33.4);
+                    }}
+                  >
+                    <div className="icon">
+                      <InformationIcon />
+                    </div>
+                    <div className="name">About</div>
+                  </li>
+                </Link>
+              </>
             ) : (
               <Link to="/about">
                 <li

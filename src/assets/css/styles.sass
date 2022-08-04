@@ -11,7 +11,8 @@
   text-decoration: none
 
 $main: #00719C
-$pri: #BFBEFF
+// $pri: #BFBEFF
+$pri: #5fccf7
 $dark: #000000
 $light: #FFFFFF
 $para: #333333
@@ -266,8 +267,9 @@ header
   z-index: 10
 
   .logo
-    height: 60px
-    width: 60px
+    height: 100%
+    width: 100px
+    @include flex($justify: center)
 
     img
       width: 100%

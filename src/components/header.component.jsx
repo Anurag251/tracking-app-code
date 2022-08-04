@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo/logo.svg";
+import logo from "../assets/images/logo/main-logo.png";
 import { auth } from "../firebase/firebase.utils";
 import {
   SearchIcon,
