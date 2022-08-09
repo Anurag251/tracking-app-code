@@ -39,8 +39,8 @@ $para: #333333
 
 @mixin btnHover()
   // transform: scale(1.02) translateY(-1px)
-  background-color: #6966ff
-  box-shadow: 0 0 4px rgba(#6966ff, .2)
+  background-color: #00719C
+  box-shadow: 0 0 4px rgba(#00719C, .2)
 
 @mixin trans()
   transition: all .5s cubic-bezier(0,1,0,1)
@@ -257,7 +257,7 @@ section
 
 /**********    header    **********/
 header
-  @include grid($columns: 1fr 1fr 1fr)
+  @include grid($columns: 1fr 1fr )
   background-color: rgba($dark, .45)
   backdrop-filter: blur(30px)
   padding: .5rem
@@ -1054,6 +1054,9 @@ footer
             font-weight: 400
             margin-bottom: 10px
 
+            i
+              margin: 0 5px
+
           .blog-title
             font-size: 18px
             font-weight: 600
@@ -1111,6 +1114,7 @@ footer
           color: rgba($dark, .5)
           font-weight: 400
 
+/**********    solutions    **********/
 .solutions
   .title
     font-size: 30px
@@ -1180,6 +1184,7 @@ footer
         pointer-events: none
         @include trans()
 
+/**********    message-page    **********/
 .message-page
   background-color: #323232
   height: 100vh
@@ -1237,12 +1242,14 @@ footer
       text-transform: uppercase
       color: #e7e7e7
 
+/**********    message-section    **********/
 .message-section
   max-height: 80vh
   height: 100%
   width: 100%
   overflow-y: scroll
 
+/**********    message-layout    **********/
 .message-layout
   width: 100%
   @include flex($justify: flex-start)
@@ -1289,6 +1296,7 @@ footer
       border-radius: 10px 10px 0 10px
       background-color: $main
 
+/**********    testimonial    **********/
 .testimonial
   .title
     font-size: 30px
@@ -1337,3 +1345,104 @@ footer
       font-size: 15px
       line-height: 1.2rem
       color: rgba($dark, .8)
+      max-height: 80px
+      overflow-y: auto
+
+/**********    blog-details    **********/
+.blog-details
+  @include grid($columns: 2fr 1fr)
+  grid-gap: 10px
+  padding: 1rem
+  border-radius: 20px
+  background-color: rgba($light, .2)
+
+  .full-details
+    background-color: $light
+    padding: 1rem
+    border-radius: 20px
+
+    .image
+      img
+        height: 400px
+        width: 100%
+        object-fit: cover
+        border-radius: 20px
+
+    .content
+      margin-top: .5rem
+
+      .date
+        color: rgba($dark,.6)
+        font-size: 12px
+        font-weight: 400
+        margin-bottom: 10px
+        i
+          margin: 0 5px
+
+      .blog-title
+        font-size: 22px
+        font-weight: 600
+        color: $dark
+        text-transform: capitalize
+
+      .desc
+        color: $para
+        font-size: 18px
+        line-height: 1.5rem
+        text-align: justify
+        margin-top: .5rem
+
+  ::-webkit-scrollbar
+    width: 5px
+
+  ::-webkit-scrollbar-track
+    border: none
+    background-color: #e2e2e2
+    border-radius: 10px
+
+  ::-webkit-scrollbar-thumb
+    background-color: $main
+    border-radius: 10px
+
+  .recent-blog
+    .title
+      color: $light
+      font-size: 24px
+      font-weight: 600
+      text-transform: uppercase
+      margin-bottom: 1rem
+
+    .all-post
+      max-height: 500px
+      overflow-y: auto
+      padding-right: 10px
+
+    .item
+      padding: .4rem
+      background-color: $light
+      @include flex($justify: flex-start)
+      margin-bottom: .6rem
+      border-radius: 10px
+      cursor: pointer
+      @include trans()
+
+      &:hover
+        transform: translateY(-2px)
+        box-shadow: 0 2px 6px rgba($dark, .1)
+
+        .name
+          color: $main
+
+      .image
+        img
+          height: 60px
+          width: 80px
+          border-radius: 10px
+          object-fit: cover
+
+      .name
+        font-size: 16px
+        font-weight: 600
+        margin-left: 10px
+        text-transform: capitalize
+        color: $dark

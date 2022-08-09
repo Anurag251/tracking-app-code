@@ -71,6 +71,25 @@ $para: #333333
       .blog-list
         @include grid($columns: 1fr 1fr)
 
+  /**********    blog-details    **********/
+  .blog-details
+    @include grid($columns: 1.6fr 1fr)
+
+    .full-details
+      .image
+        img
+          height: 200px
+
+@media only screen and (max-width: 900px)
+  /**********    blog-details    **********/
+  .blog-details
+    @include grid($columns: 1fr)
+
+    .full-details
+      .image
+        img
+          height: 300px
+
 @media only screen and (max-width: 800px)
   .wrapper
     max-width: 600px
@@ -87,7 +106,7 @@ $para: #333333
 
   /**********    header    **********/
   header
-    @include grid($columns: .2fr 1fr 1fr)
+    @include grid($columns: 1fr 1fr)
 
     .profile
       .profile-details
@@ -97,7 +116,7 @@ $para: #333333
   /**********    feature    **********/
   .feature
     .card-list
-      @include grid($columns: 1fr )
+      @include grid($columns: 1fr)
 
   /**********    about-us    **********/
   .about-page
@@ -142,6 +161,16 @@ $para: #333333
   .contact-page
     @include grid($columns: 1fr)
 
+  /**********    blog-details    **********/
+  .blog-details
+    padding: 0
+    background: none
+
+    .full-details
+      .image
+        img
+          height: 170px
+
 @media only screen and (max-width: 600px)
   .wrapper
     max-width: 450px
@@ -160,27 +189,8 @@ $para: #333333
 
   /**********    header    **********/
   header
-    @include grid($columns: .2fr 1fr .2fr)
+    @include grid($columns: 1fr 1.5fr)
     grid-gap: 10px
-
-    .das
-      display: none
-
-    .sign-up-btn
-      .icon
-        pointer-events: auto
-
-      span
-        display: none
-
-      .pointer
-        right: 23px
-
-      ul
-        li
-          span
-            display: block
-            color: $dark
 
     .profile
       .profile-details
@@ -413,8 +423,8 @@ $para: #333333
     padding: 0 1rem
 
   /**********    footer    **********/
-  footer
-    display: none
+  // footer
+  //   display: none
 
   /**********    chat    **********/
   .chat-page
@@ -490,4 +500,29 @@ $para: #333333
             color: rgba($dark, .6)
             margin-right: 10px
 
-  .message-layout
+@media only screen and (max-width: 402px)
+  /**********    blogpage    **********/
+  .blogpage
+    padding: 0
+    background: none
+
+  /**********    header    **********/
+  header
+    .das
+      display: none
+
+    .sign-up-btn
+      .icon
+        pointer-events: auto
+
+      span
+        display: none
+
+      .pointer
+        right: 23px
+
+      ul
+        li
+          span
+            display: block
+            color: $dark

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Banner from "../components/banner.componant";
 import EarnWithUs from "../components/earn-with-us.component";
 import Feature from "../components/feature.componsnt";
@@ -7,18 +7,9 @@ import Solutions from "../components/solutions.component";
 import Testimonial from "../components/testimonial.component";
 
 const Homepage = () => {
-  // const [isMobView, setIsMobView] = useState(false);
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
-
-  // useEffect(() => {
-  //   if (window.innerWidth <= 600) {
-  //     setIsMobView(true);
-  //   } else {
-  //     setIsMobView(false);
-  //   }
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="homepage">
