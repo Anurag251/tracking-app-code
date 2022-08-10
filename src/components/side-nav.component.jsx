@@ -46,36 +46,30 @@ const SideNav = () => {
   }, [history.location.pathname]);
 
   useEffect(() => {
-    const navLinks = document.querySelectorAll(".side-nav-bar a");
+    if (history.location.pathname === "/") {
+      setIndic(2.5);
+      setMobIndic(16.6);
+    }
 
-    navLinks.forEach((navLink) => {
-      let linkUrl = navLink.getAttribute("href");
+    if (history.location.pathname === "/about") {
+      setIndic(23.2);
+      setMobIndic(33.4);
+    }
 
-      if (history.location.pathname === "/") {
-        setIndic(2.5);
-        setMobIndic(16.6);
-      }
+    if (history.location.pathname === "/blog") {
+      setIndic(44.2);
+      setMobIndic(50);
+    }
 
-      if (history.location.pathname === "/about") {
-        setIndic(23.2);
-        setMobIndic(33.4);
-      }
+    if (history.location.pathname === "/notifications") {
+      setIndic(64.6);
+      setMobIndic(66.6);
+    }
 
-      if (history.location.pathname === "/blog") {
-        setIndic(44.2);
-        setMobIndic(50);
-      }
-
-      if (history.location.pathname === "/notifications") {
-        setIndic(64.6);
-        setMobIndic(66.6);
-      }
-
-      if (history.location.pathname === "/contact") {
-        setIndic(85.1);
-        setMobIndic(83.4);
-      }
-    });
+    if (history.location.pathname === "/contact") {
+      setIndic(85.1);
+      setMobIndic(83.4);
+    }
   }, [history, indic]);
 
   return (

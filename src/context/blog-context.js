@@ -1,5 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 import Blog from "../components/blog.component";
+import Loading from "../components/loading.component";
 import { urls } from "../url";
 
 export const BlogContext = createContext();
@@ -14,7 +15,7 @@ export const BlogProvider = () => {
 
   return (
     <BlogContext.Provider value={[blogDatas, setBlogDatas]}>
-      <Blog />
+      {blogDatas !== [] ? <Blog /> : <Loading />}
     </BlogContext.Provider>
   );
 };

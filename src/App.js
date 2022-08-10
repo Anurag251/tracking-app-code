@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import Header from "./components/header.component";
@@ -17,10 +17,23 @@ import MobileHomepage from "./mobile-pages/mobile-homepage.component";
 import Chatpage from "./mobile-pages/chatpage.component";
 import MessagePage from "./mobile-pages/message-page.component";
 import BlogDetailspage from "./pages/blog-detailspage.component";
+import { TickIcon, WarningIcon } from "./components/icons.component";
 
 const App = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState(false);
+
   return (
     <div className="app" style={{ backgroundImage: `url(${bgImage})` }}>
+      <p
+        className={`error ${errorMessage !== "" ? "active" : ""} ${
+          error ? "success" : ""
+        }`}
+      >
+        {error ? <TickIcon /> : <WarningIcon />}
+        {errorMessage}
+      </p>
+
       <div className="wrapper">
         <Header />
         <div className="section">
@@ -39,7 +52,12 @@ const App = () => {
                 component={BlogDetailspage}
               />
 
-              <Route exact path="/contact" component={ContactPage} />
+              <Route exact path="/contact">
+                <ContactPage
+                  setError={setError}
+                  setErrorMessage={setErrorMessage}
+                />
+              </Route>
 
               <Route exact path="/mobile" component={MobileHomepage} />
 

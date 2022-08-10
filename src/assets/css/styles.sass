@@ -10,9 +10,11 @@
   background: none
   text-decoration: none
 
-$main: #00719C
+// $main: #00719C
+$main: #BF4F6B
 // $pri: #BFBEFF
 $pri: #5fccf7
+// $pri: #BF4F6B
 $dark: #000000
 $light: #FFFFFF
 $para: #333333
@@ -39,8 +41,8 @@ $para: #333333
 
 @mixin btnHover()
   // transform: scale(1.02) translateY(-1px)
-  background-color: #00719C
-  box-shadow: 0 0 4px rgba(#00719C, .2)
+  background-color: #DA5B64
+  box-shadow: 0 0 4px rgba(#DA5B64, .2)
 
 @mixin trans()
   transition: all .5s cubic-bezier(0,1,0,1)
@@ -260,7 +262,7 @@ header
   @include grid($columns: 1fr 1fr )
   background-color: rgba($dark, .45)
   backdrop-filter: blur(30px)
-  padding: .5rem
+  padding: 1rem .5rem
   border-radius: 20px
   position: sticky
   top: 0
@@ -731,7 +733,7 @@ footer
 .error
   position: fixed
   left: 50%
-  top: 15%
+  top: -100px
   transform: translate(-50%, -50%)
   max-width: 600px
   padding: .5rem 1rem
@@ -742,6 +744,22 @@ footer
   text-align: center
   z-index: 30
   pointer-events: none
+  opacity: 0
+  @include trans()
+  @include flex($justify: flex-start)
+  font-weight: 600
+
+  &.success
+    background-color: #00be46
+
+  &.active
+    top: 33px
+    opacity: 1
+
+  svg
+    margin-right: 5px
+    height: 18px
+    width: 18px
 
 /**********    contact-page    **********/
 .contact-page

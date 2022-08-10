@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
+import Loading from "../components/loading.component";
 
 import Slide from "../components/slide.component";
 import { urls } from "../url";
@@ -12,14 +13,13 @@ export const SliderProvider = () => {
     fetch(urls + "banner/")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setSliderData(data);
       });
   }, []);
 
   return (
     <SliderContext.Provider value={[sliderData, setSliderData]}>
-      <Slide />
+      {sliderData !== [] ? <Slide /> : <Loading />}
     </SliderContext.Provider>
   );
 };

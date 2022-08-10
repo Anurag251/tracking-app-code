@@ -9,12 +9,18 @@ const BlogDetailspage = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     fetch(urls + "blog/")
       .then((res) => res.json())
       .then((datas) => {
         setBlogDatas(datas);
       });
   }, [id]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="blog-details">

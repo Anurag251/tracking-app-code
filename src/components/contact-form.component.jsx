@@ -1,20 +1,17 @@
 import React, { useState } from "react";
+import { urls } from "../url";
 import CustomButton from "./custom-button.component";
 import CustomInput from "./custom-input.component";
 import PageBanner from "./page-banner.component";
 
-const ContactForm = () => {
+const ContactForm = ({ setError, setErrorMessage }) => {
   const [values, setValues] = useState({
     displayName: "",
     email: "",
     mobileNumber: "",
+    subject: "",
     yourMessage: "",
   });
-  // const [displayName, setDisplayName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [mobileNumber, setMobileNumber] = useState("");
-  // const [yourMessage, setYourMessage] = useState("");
-  const [error] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,82 +19,114 @@ const ContactForm = () => {
     setValues({ ...values, [name]: value });
   };
 
-  // const updateDisplayName = (event) => {
-  //   setDisplayName(event.target.value);
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append("fullname", values.displayName);
+    formData.append("email", values.email);
+    formData.append("mobile", values.mobileNumber);
+    formData.append("subject", values.subject);
+    formData.append("message", values.yourMessage);
 
-  // const updateEmail = (event) => {
-  //   setEmail(event.target.value);
-  // };
+    fetch(urls + "contactpage/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: formData,
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.text().then((text) => {
+            throw new Error(text);
+          });
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setErrorMessage("Message send");
+        setError(true);
 
-  // const updateMobileNumber = (event) => {
-  //   setMobileNumber(event.target.value);
-  // };
+        setValues((previousInputs) => ({
+          ...previousInputs,
+          displayName: "",
+          email: "",
+          mobileNumber: "",
+          subject: "",
+          yourMessage: "",
+        }));
 
-  // const updateYourMessage = (event) => {
-  //   setYourMessage(event.target.value);
-  // };
+        setTimeout(() => {
+          setErrorMessage("");
+          setError(true);
+        }, 5000);
+      })
+      .catch((err) => {
+        const errors = JSON.parse(err.message);
+        setErrorMessage(errors.mobile[0]);
+        setError(false);
 
-  // const handleSubmit = () => {
-  //   if (updateDisplayName === "") {
-  //     setError("Please Enter Your Name");
-  //   }
-  //   if (email === "") {
-  //     setError("Please Enter Your Email Address");
-  //   }
-  //   if (yourMessage === "") {
-  //     setError("Please Enter Your Message");
-  //   }
-  // };
+        setTimeout(() => {
+          setErrorMessage("");
+          setError(false);
+        }, 5000);
+      });
+  };
 
   return (
-    <>
-      <p className="error">{error}</p>
-      <div className="contact-form">
-        <PageBanner title="Contact Us"></PageBanner>
-        <h3>Send Your Message</h3>
-        <form action="">
-          <CustomInput
-            type="text"
-            name="displayName"
-            label="Your Name*"
-            handleChange={handleChange}
-            value={values.displayName}
-          />
+    <div className="contact-form">
+      <PageBanner title="Contact Us"></PageBanner>
+      <h3>Send Your Message</h3>
+      <form onSubmit={handleSubmit}>
+        <CustomInput
+          type="text"
+          name="displayName"
+          label="Your Name*"
+          handleChange={handleChange}
+          value={values.displayName}
+        />
 
-          <CustomInput
-            type="email"
-            name="email"
-            label="Email Address*"
-            handleChange={handleChange}
-            value={values.email}
-            required
-          />
+        <CustomInput
+          type="email"
+          name="email"
+          label="Email Address*"
+          handleChange={handleChange}
+          value={values.email}
+          required
+        />
 
-          <CustomInput
-            type="text"
-            name="mobileNumber"
-            label="Mobile Number"
-            handleChange={handleChange}
-            value={values.mobileNumber}
-            required
-          />
+        <CustomInput
+          type="number"
+          name="mobileNumber"
+          label="Mobile Number"
+          handleChange={handleChange}
+          value={values.mobileNumber}
+          required
+        />
 
-          <CustomInput
-            type="text-area"
-            label="Your Message*"
-            name="yourMessage"
-            handleChange={handleChange}
-            value={values.yourMessage}
-            textArea
-          />
+        <CustomInput
+          type="text"
+          name="subject"
+          label="Subject"
+          handleChange={handleChange}
+          value={values.subject}
+          required
+        />
 
-          <CustomButton noArrow type="submit">
-            Submit
-          </CustomButton>
-        </form>
-      </div>
-    </>
+        <CustomInput
+          label=" "
+          placeholder="Your Message*"
+          name="yourMessage"
+          handleChange={handleChange}
+          value={values.yourMessage}
+          textArea
+        />
+
+        <CustomButton noArrow type="submit">
+          Submit
+        </CustomButton>
+      </form>
+    </div>
   );
 };
 

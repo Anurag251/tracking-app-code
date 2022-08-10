@@ -1,12 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import FullCard from "../components/fullcard.component";
 import PageBanner from "../components/page-banner.component";
-import aboutImage1 from "../assets/images/about1.png";
-import aboutImage2 from "../assets/images/about2.png";
+import { urls } from "../url";
 
 const Aboutpage = () => {
+  const [aboutUsDatas, setAboutUsDatas] = useState([]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    fetch(urls + "aboutus/")
+      .then((res) => res.json())
+      .then((data) => {
+        setAboutUsDatas(data);
+      });
   }, []);
 
   return (
@@ -17,23 +24,18 @@ const Aboutpage = () => {
       </PageBanner>
 
       <section className="no-padding">
-        <FullCard title="What is Tracking App?" image={aboutImage1}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged.
-        </FullCard>
-
-        <FullCard title="What Tracking App Does?" image={aboutImage2} rotate>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged.
-        </FullCard>
+        {aboutUsDatas.map((aboutUsData, idx) => {
+          return (
+            <FullCard
+              key={idx}
+              title={aboutUsData.title}
+              image={aboutUsData.image}
+              rotate={idx % 2 === 0 ? true : false}
+            >
+              {aboutUsData.description}
+            </FullCard>
+          );
+        })}
       </section>
     </div>
   );
