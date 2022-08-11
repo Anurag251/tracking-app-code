@@ -26,17 +26,17 @@ const Header = () => {
           <UserIcon />
         </div>
 
-        <Link to="/login">
+        <a href="https://delivery.eliteslogistics.com/login" target="_blank">
           <span>Login</span>
-        </Link>
+        </a>
 
         <div className="das" />
 
-        <Link to="/sign-up">
+        <a href="https://delivery.eliteslogistics.com/sign-up" target="_blank">
           <span className="su">
             Sign Up <ThinArrowIcon />
           </span>
-        </Link>
+        </a>
       </div>
     </header>
   );
