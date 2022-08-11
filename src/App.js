@@ -19,6 +19,7 @@ import MessagePage from "./mobile-pages/message-page.component";
 import BlogDetailspage from "./pages/blog-detailspage.component";
 import { TickIcon, WarningIcon } from "./components/icons.component";
 
+// hello
 const App = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [error, setError] = useState(false);
