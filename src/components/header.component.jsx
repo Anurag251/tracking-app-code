@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header>
       <div className="logo">
-        <Link to="/mobile">
+        <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
       </div>
@@ -22,11 +22,11 @@ const Header = () => {
       </div> */}
 
       <div className="sign-up-btn">
-        <div className="icon">
-          <UserIcon />
-        </div>
-
         <a href="https://delivery.eliteslogistics.com/login" target="_blank">
+          <div className="icon">
+            <UserIcon />
+          </div>
+
           <span>Login</span>
         </a>
 
