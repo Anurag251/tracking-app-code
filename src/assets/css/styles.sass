@@ -258,6 +258,19 @@ section
     @include trans()
 
 /**********    header    **********/
+.header-top-section
+  @include flex($justify: flex-end)
+  font-size: 13px
+  color: $pri
+  padding: .3rem 0
+
+  .email
+    margin-left: 20px
+    @include flex($justify: flex-start)
+
+    i
+      margin-right: 5px
+
 header
   @include grid($columns: 1fr 1fr )
   background-color: rgba($dark, .45)
@@ -663,22 +676,30 @@ footer
     font-weight: 700
 
   h2
-    font-size: 48px
+    font-size: 32px
     font-weight: 400
 
 /**********    full-card    **********/
 .full-card
-  @include grid($columns: 1fr 1.2fr)
+  @include grid($columns: 1fr)
   margin-top: 2rem
+
+  &:nth-child(1)
+    margin-top: 0
+    @include grid($columns: 1fr 1.2fr)
+
+    img
+      display: block
 
   &.rotate
     @include grid($columns: 1.2fr 1fr)
 
   img
-    height: 240px
+    height: 100%
     width: 100%
     border-radius: 20px
     object-fit: cover
+    display: none
 
   .details
     h3

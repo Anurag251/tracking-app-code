@@ -32,7 +32,12 @@ const Aboutpage = () => {
               image={aboutUsData.image}
               rotate={idx % 2 === 0 ? true : false}
             >
-              {aboutUsData.description}
+              {aboutUsData.description?.length > aboutUsData.description.length
+                ? aboutUsData.description.substr(
+                    0,
+                    aboutUsData.description.length - 1
+                  ) + "..."
+                : aboutUsData.description}
             </FullCard>
           );
         })}

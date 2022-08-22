@@ -47,30 +47,30 @@ const SideNav = () => {
 
   useEffect(() => {
     if (history.location.pathname === "/") {
-      setIndic(2.5);
-      setMobIndic(16.6);
+      setIndic(3.5);
+      setMobIndic(20);
     }
 
     if (history.location.pathname === "/about") {
-      setIndic(23.2);
-      setMobIndic(33.4);
+      setIndic(29.5);
+      setMobIndic(40);
     }
 
     if (history.location.pathname === "/blog") {
-      setIndic(44.2);
-      setMobIndic(50);
+      setIndic(55.2);
+      setMobIndic(60);
     }
 
-    if (history.location.pathname === "/notifications") {
-      setIndic(64.6);
-      setMobIndic(66.6);
-    }
+    // if (history.location.pathname === "/notifications") {
+    //   setIndic(64.6);
+    //   setMobIndic(66.6);
+    // }
 
     if (history.location.pathname === "/contact") {
-      setIndic(85.1);
-      setMobIndic(83.4);
+      setIndic(81.5);
+      setMobIndic(80);
     }
-  }, [history, indic]);
+  }, [history.location.pathname, indic]);
 
   return (
     <div className={`${mobileNav ? "side-nav-mob" : "side-nav"}`}>
@@ -84,8 +84,8 @@ const SideNav = () => {
           <li
             className="nav-links"
             onClick={() => {
-              setIndic(2.5);
-              setMobIndic(16.6);
+              setIndic(3.5);
+              setMobIndic(20);
             }}
           >
             <div className="icon">
@@ -99,8 +99,8 @@ const SideNav = () => {
           <li
             className="nav-links"
             onClick={() => {
-              setIndic(23.2);
-              setMobIndic(33.4);
+              setIndic(29.5);
+              setMobIndic(40);
             }}
           >
             <div className="icon">
@@ -114,8 +114,8 @@ const SideNav = () => {
           <li
             className="nav-links"
             onClick={() => {
-              setIndic(44.2);
-              setMobIndic(50);
+              setIndic(55.2);
+              setMobIndic(60);
             }}
           >
             <div className="icon">
@@ -125,7 +125,7 @@ const SideNav = () => {
           </li>
         </Link>
 
-        <Link to="/notifications">
+        {/* <Link to="/notifications">
           <li
             className="nav-links"
             onClick={() => {
@@ -138,14 +138,14 @@ const SideNav = () => {
             </div>
             <div className="name">Notification</div>
           </li>
-        </Link>
+        </Link> */}
 
         <Link to="/contact">
           <li
             className="nav-links"
             onClick={() => {
-              setIndic(85.1);
-              setMobIndic(83.4);
+              setIndic(81.5);
+              setMobIndic(80);
             }}
           >
             <div className="icon">

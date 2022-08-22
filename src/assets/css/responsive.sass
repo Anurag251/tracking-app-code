@@ -31,7 +31,7 @@ $para: #333333
 @mixin trans()
   transition: all .5s cubic-bezier(0,1,0,1)
 
-@media only screen and (max-width: 1300px)
+@media only screen and (max-width: 1200px)
   .wrapper
     max-width: 1000px
 
@@ -134,8 +134,10 @@ $para: #333333
 
   /**********    full-card    **********/
   .full-card
-    @include grid($columns: 1fr)
     margin: 1rem 0 3rem
+
+    &:nth-child(1)
+      @include grid($columns: 1fr)
 
     .details
       h3
