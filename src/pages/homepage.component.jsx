@@ -3,6 +3,7 @@ import Banner from "../components/banner.componant";
 import EarnWithUs from "../components/earn-with-us.component";
 import Feature from "../components/feature.componsnt";
 import HowToUse from "../components/how-to-use.component";
+import Partners from "../components/partners.component";
 import Solutions from "../components/solutions.component";
 import Testimonial from "../components/testimonial.component";
 
@@ -32,6 +33,10 @@ const Homepage = () => {
 
       <section>
         <Testimonial />
+      </section>
+
+      <section>
+        <Partners />
       </section>
     </div>
   );

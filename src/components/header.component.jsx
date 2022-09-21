@@ -7,16 +7,35 @@ const Header = () => {
   return (
     <React.Fragment>
       <div className="header-top-section">
-        <div className="email">
-          <i className="fas fa-envelope"></i>
-          eliteslogistics@gmail.com
-        </div>
+        <a href="mailto: eliteslogistics100@gmail.com">
+          <div className="email">
+            <i className="fas fa-envelope"></i>
+            eliteslogistics100@gmail.com
+          </div>
+        </a>
 
-        <div className="email">
-          <i className="fas fa-phone-alt"></i>
-          +977-9876543210
-        </div>
+        <a href="tel: +977015912468">
+          <div className="email">
+            <i className="fas fa-phone-alt"></i>
+            CSD: +977-015912468
+          </div>
+        </a>
+
+        <a href="tel: +9779881111100">
+          <div className="email">
+            <i className="fas fa-phone-alt"></i>
+            Operation: +977-9881111100
+          </div>
+        </a>
+
+        <a href="tel: +9779881111200">
+          <div className="email">
+            <i className="fas fa-phone-alt"></i>
+            Courier: +977-9881111200
+          </div>
+        </a>
       </div>
+
       <header>
         <div className="logo">
           <Link to="/">
@@ -34,7 +53,7 @@ const Header = () => {
       </div> */}
 
         <div className="sign-up-btn">
-          <a href="https://delivery.eliteslogistics.com/login" target="_blank">
+          <a href="https://delivery.eliteslogistics.com/login" target="blank">
             <div className="icon">
               <UserIcon />
             </div>
@@ -44,10 +63,7 @@ const Header = () => {
 
           <div className="das" />
 
-          <a
-            href="https://delivery.eliteslogistics.com/sign-up"
-            target="_blank"
-          >
+          <a href="https://delivery.eliteslogistics.com/sign-up" target="blank">
             <span className="su">
               Sign Up <ThinArrowIcon />
             </span>

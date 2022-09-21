@@ -12,6 +12,8 @@ const Feature = () => {
   }, []);
   return (
     <div className="feature">
+      <div className="title">Our Features / Services</div>
+
       {featureData !== [] ? (
         <div className="card-list">
           {featureData.map((data, idx) => (

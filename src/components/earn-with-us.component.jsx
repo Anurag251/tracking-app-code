@@ -10,14 +10,16 @@ const EarnWithUs = () => {
       </div>
 
       <div className="details">
-        <div className="name">Got a Bike/Cycle? Earn with us</div>
+        <div className="name">Got a Bike/Scooter? Earn with us</div>
         <ul>
           <li>The freedom to give the service whenever you want</li>
           <li>Earn extra with daily quests and special offers</li>
           <li>Always get your payment right on time!</li>
         </ul>
 
-        <CustomButton>Become a Delivery Person</CustomButton>
+        <a href="https://delivery.eliteslogistics.com/sign-up" target="blank">
+          <CustomButton>Become a Delivery Person</CustomButton>
+        </a>
       </div>
     </div>
   );

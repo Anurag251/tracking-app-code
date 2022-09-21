@@ -6,7 +6,7 @@ const SignUpFormRider = () => {
   const [formValues, setFormValuse] = useState({
     firstName: "",
     lastName: "",
-    userEmail: "",
+    userEmail: "",log
     mobileNumber: "",
     password: "",
     confirmPassword: "",

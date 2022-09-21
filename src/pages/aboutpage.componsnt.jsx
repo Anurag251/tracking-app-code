@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FullCard from "../components/fullcard.component";
+import OurTeamsComponent from "../components/our-teams.component";
 import PageBanner from "../components/page-banner.component";
 import { urls } from "../url";
 
@@ -41,6 +42,19 @@ const Aboutpage = () => {
             </FullCard>
           );
         })}
+      </section>
+
+      <section>
+        <h2
+          style={{
+            textAlign: "center",
+            fontSize: "30px",
+            marginBottom: "1rem",
+          }}
+        >
+          Our Team Members
+        </h2>
+        <OurTeamsComponent />
       </section>
     </div>
   );

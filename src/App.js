@@ -12,12 +12,16 @@ import Blogpage from "./pages/blogpage.component";
 
 import "./assets/css/styles.sass";
 import "./assets/css/responsive.sass";
-import NotificationsPage from "./pages/notifications-page.component";
 import MobileHomepage from "./mobile-pages/mobile-homepage.component";
 import Chatpage from "./mobile-pages/chatpage.component";
 import MessagePage from "./mobile-pages/message-page.component";
 import BlogDetailspage from "./pages/blog-detailspage.component";
 import { TickIcon, WarningIcon } from "./components/icons.component";
+import CareerPageComponent from "./pages/career-page.component";
+import CareerDetailsPageComponent from "./pages/career-details-page.component";
+import FaqsPageComponent from "./pages/faqs-page.component";
+import JobApplyPageComponent from "./pages/job-apply-page.component";
+import TermsConditionsPageComponent from "./pages/terms-conditions-page.component";
 
 // hello
 const App = () => {
@@ -68,10 +72,26 @@ const App = () => {
                 <MessagePage />
               </Route>
 
+              <Route exact path="/career" component={CareerPageComponent} />
+
               <Route
                 exact
-                path="/notifications"
-                component={NotificationsPage}
+                path="/career-details"
+                component={CareerDetailsPageComponent}
+              />
+
+              <Route exact path="/faqs" component={FaqsPageComponent} />
+
+              <Route
+                exact
+                path="/apply-now"
+                component={JobApplyPageComponent}
+              />
+
+              <Route
+                exact
+                path="/terms-conditions"
+                component={TermsConditionsPageComponent}
               />
 
               <Redirect to="/" />

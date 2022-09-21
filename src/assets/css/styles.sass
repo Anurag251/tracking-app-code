@@ -261,8 +261,10 @@ section
 .header-top-section
   @include flex($justify: flex-end)
   font-size: 13px
-  color: $pri
   padding: .3rem 0
+
+  a
+    color: $pri
 
   .email
     margin-left: 20px
@@ -538,6 +540,12 @@ header
 
 /**********    feature    **********/
 .feature
+  .title
+    font-size: 30px
+    margin: 3rem 0 1rem
+    text-align: center
+    font-weight: 600
+
   .card-list
     @include grid($columns: 1fr 1fr 1fr)
 
@@ -550,6 +558,11 @@ header
       border-radius: 20px
       box-shadow: 0px 4px 17px rgba($dark, 0.10)
 
+      &:hover
+        img
+          top: -22%
+          box-shadow: 0 4px 10px rgba($dark, .1)
+
       img
         position: absolute
         left: 50%
@@ -559,6 +572,7 @@ header
         height: 200px
         object-fit: cover
         border-radius: 20px
+        @include trans()
 
       .name
         font-size: 24px
@@ -606,6 +620,12 @@ header
           font-size: 18px
           margin-bottom: 10px
 
+        .btn-group
+          @include flex($justify: flex-start)
+
+          button
+            margin: 5px
+
   .image
     img
       height: 80%
@@ -639,14 +659,28 @@ footer
   padding: 1rem
   background-color: #141414
   @include flex($justify: space-between)
+  flex-wrap: wrap
   margin-top: 12px
   border-radius: 15px
 
   h4
-    font-size: 18px
+    font-size: 14px
     line-height: 22px
     color: #C6C6C6
     font-weight: 400
+
+  ul
+    @include flex($justify: center)
+    margin: 1rem 0
+
+    li
+      list-style: none
+      margin: 0 10px
+      font-size: 12px
+      font-weight: 600
+
+      a
+        color: $light
 
   .social-links
     @include flex($justify: flex-end)
@@ -658,6 +692,7 @@ footer
       background-color: #383838
       @include flex($justify: center)
       margin-left: 10px
+      cursor: pointer
 
       i
         color: #ebebeb
@@ -681,7 +716,7 @@ footer
 
 /**********    full-card    **********/
 .full-card
-  @include grid($columns: 1fr)
+  @include grid($columns: 1.2fr 1fr)
   margin-top: 2rem
 
   &:nth-child(1)
@@ -695,11 +730,11 @@ footer
     @include grid($columns: 1.2fr 1fr)
 
   img
-    height: 100%
+    height: 200px
     width: 100%
     border-radius: 20px
-    object-fit: cover
-    display: none
+    object-fit: contain
+    // -webkit-box-reflect: below 0 linear-gradient( rgba(0,0,0, 0.5), rgba(0,0,0,1))
 
   .details
     h3
@@ -739,6 +774,7 @@ footer
     border: 2px solid #D3D3D3
     border-radius: 10px
     font-size: 18px
+    padding: 1rem 0
     padding-left: 15px
 
     &:focus ~ .form-input-label
@@ -822,7 +858,6 @@ footer
     font-weight: 400
 
 /**********    sign-up, login    **********/
-
 .login-page
   @include image()
 
@@ -1345,6 +1380,7 @@ footer
     font-weight: 600
     color: $dark
     margin-bottom: 2rem
+    text-align: center
 
   .mySwiper
     height: 100%
@@ -1360,16 +1396,33 @@ footer
     @include flex($justify: center)
     flex-direction: column
 
+    // @keyframes rotation1
+    //   0%
+    //     transform: rotate(0)
+    //   100%
+    //     transform: rotate(360deg)
+
+    // @keyframes rotation2
+    //   0%
+    //     transform: rotate(0)
+    //   100%
+    //     transform: rotate(-360deg)
+
     .image
       margin-bottom: .8rem
+      border: 3px solid $light
+      border-bottom: 3px solid $main
+      border-radius: 50%
+      height: 100px
+      width: 100px
+      overflow: hidden
+      // animation: rotation1 1s infinite alternate
 
       img
-        height: 100px
-        width: 100px
-        border-radius: 50%
+        height: 100%
+        width: 100%
         object-fit: cover
-        border: 3px solid $light
-        border-bottom: 3px solid $main
+        // animation: rotation2 1s infinite alternate
 
     .name
       font-size: 18px
@@ -1488,3 +1541,231 @@ footer
         margin-left: 10px
         text-transform: capitalize
         color: $dark
+
+.partners
+  .title
+    font-size: 30px
+    font-weight: 600
+    color: $dark
+    margin-bottom: 2rem
+    text-align: center
+
+  .mySwiper
+    height: 100%
+    width: 100%
+    padding-bottom: 1rem
+
+  img
+    width: 100%
+    height: 100px
+    object-fit: contain
+
+.our-teams
+  .sec
+    margin-bottom: 3rem
+
+    &:nth-last-child(1)
+      margin-bottom: 0
+
+  .title
+    text-align: center
+    font-weight: 500
+    font-size: 24px
+    margin-bottom: 2rem
+
+  .team-list
+    @include flex($justify: center)
+    align-items: flex-start
+    flex-wrap: wrap
+
+    .item
+      margin: 0 1rem 1rem
+      @include flex($justify: center)
+      flex-direction: column
+
+      .image-sec
+        img
+          height: 100px
+          width: 100px
+          object-fit: cover
+          border-radius: 20px
+
+      .details-sec
+        text-align: center
+        @include flex($justify: center)
+        flex-direction: column
+        justify-content: flex-start
+
+        .name
+          font-size: 16px
+
+        .depart
+          margin: 5px 0
+          font-size: 12px
+          max-width: 100px
+          color: rgba($dark, .6)
+          text-align: center
+
+        .desc
+          font-size: 12px
+          max-width: 120px
+          margin-top: 5px
+
+/**********    career-page    **********/
+.career-page
+  padding: 2rem
+  background-color: $light
+  border-radius: 20px
+
+  .title
+    margin-bottom: 1rem
+
+  .career
+    .list
+      @include grid($columns: 1fr 1fr 1fr)
+      grid-gap: 10px
+
+      .item
+        padding: .5rem
+        background-color: rgba( $main, .1)
+        border-radius: 10px
+
+        .image-section
+          img
+            width: 100%
+            height: 200px
+            object-fit: cover
+            border-radius: 10px
+
+        .name
+          font-size: 16px
+          font-weight: 600
+          color: $dark
+          margin: 7px 0
+
+        p
+          font-size: 12px
+          margin: .3rem 0 .6rem
+          color: $dark
+          @include flex($justify: flex-start)
+
+          i
+            margin-right: 5px
+
+        button
+          height: 35px
+          padding: .1rem .7rem
+          font-size: 13px
+
+/**********    career-details-page    **********/
+.career-details-page
+  padding: 1rem
+  background-color: $light
+  border-radius: 20px
+
+  .image-sec
+    margin-bottom: 1rem
+    max-width: 700px
+
+    img
+      height: 400px
+      width: 100%
+      object-fit: cover
+      border-radius: 20px
+
+  .title
+    margin-bottom: 1rem
+    font-size: 24px
+
+  button
+    margin: 1rem 0
+
+  .desc
+    margin: .4rem 0
+    font-size: 16px
+    line-height: 1.5rem
+    color: rgba($dark, .8)
+    text-align: justify
+
+  h4
+    margin: 1rem 0 .5rem
+
+  ul
+    margin-left: 1rem
+
+    li
+      list-style: square
+      margin-bottom: .5rem
+      font-size: 15px
+      color: rgba($dark, .7)
+
+      &::marker
+        color: $main
+
+/***********      faq      ***********/
+.faq
+  padding: 1rem
+  background-color: $light
+  border-radius: 20px
+
+  .faq-area
+    margin-top: 2rem
+
+    ul
+      li
+        margin-bottom: 1.5rem
+        @include flex($justify: flex-start)
+        align-items: flex-start
+
+        img
+          margin-right: 10px
+          height: 25px
+          width: 25px
+          @include trans()
+
+          &.active
+            transform: rotate(-180deg)
+
+        .title-sec
+          @include flex($justify: flex-start)
+          font-weight: 600
+          font-size: 17px
+          margin-bottom: 5px
+          cursor: pointer
+
+        .desc-area
+          text-align: justify
+          line-height: 1.5rem
+          transform: rotateX(90deg)
+          height: 0
+          opacity: 0
+          @include trans()
+
+          &.active
+            transform: rotateX(0deg)
+            height: auto
+            opacity: 1
+
+.job-apply-page
+  padding: 1.5rem
+  background-color: $light
+  border-radius: 20px
+
+.terms-conditions-page
+  padding: 1.5rem
+  background-color: $light
+  border-radius: 20px
+  text-align: center
+
+  h2
+    margin-bottom: 1rem
+
+  h3
+    margin-bottom: .5rem
+
+  p
+    text-align: justify
+    color: rgba($dark, .6)
+    font-size: 16px
+    line-height: 1.5rem
+    margin-bottom: 2rem

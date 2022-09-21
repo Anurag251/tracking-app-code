@@ -7,6 +7,7 @@ import {
   SupportIcon,
   InformationIcon,
   NotificationsIcon,
+  BusinessBagIcon,
 } from "./icons.component";
 
 const SideNav = () => {
@@ -47,28 +48,28 @@ const SideNav = () => {
 
   useEffect(() => {
     if (history.location.pathname === "/") {
-      setIndic(3.5);
-      setMobIndic(20);
+      setIndic(3);
+      setMobIndic(16.6);
     }
 
     if (history.location.pathname === "/about") {
-      setIndic(29.5);
-      setMobIndic(40);
+      setIndic(23.5);
+      setMobIndic(33.4);
     }
 
     if (history.location.pathname === "/blog") {
-      setIndic(55.2);
-      setMobIndic(60);
+      setIndic(44);
+      setMobIndic(50);
     }
 
-    // if (history.location.pathname === "/notifications") {
-    //   setIndic(64.6);
-    //   setMobIndic(66.6);
-    // }
+    if (history.location.pathname === "/career") {
+      setIndic(64.6);
+      setMobIndic(66.8);
+    }
 
     if (history.location.pathname === "/contact") {
-      setIndic(81.5);
-      setMobIndic(80);
+      setIndic(85.5);
+      setMobIndic(83.5);
     }
   }, [history.location.pathname, indic]);
 
@@ -84,8 +85,8 @@ const SideNav = () => {
           <li
             className="nav-links"
             onClick={() => {
-              setIndic(3.5);
-              setMobIndic(20);
+              setIndic(3);
+              setMobIndic(16.6);
             }}
           >
             <div className="icon">
@@ -99,8 +100,8 @@ const SideNav = () => {
           <li
             className="nav-links"
             onClick={() => {
-              setIndic(29.5);
-              setMobIndic(40);
+              setIndic(23.5);
+              setMobIndic(33.4);
             }}
           >
             <div className="icon">
@@ -114,8 +115,8 @@ const SideNav = () => {
           <li
             className="nav-links"
             onClick={() => {
-              setIndic(55.2);
-              setMobIndic(60);
+              setIndic(44);
+              setMobIndic(50);
             }}
           >
             <div className="icon">
@@ -125,27 +126,27 @@ const SideNav = () => {
           </li>
         </Link>
 
-        {/* <Link to="/notifications">
+        <Link to="/career">
           <li
             className="nav-links"
             onClick={() => {
               setIndic(64.6);
-              setMobIndic(66.6);
+              setMobIndic(66.8);
             }}
           >
             <div className="icon">
-              <NotificationsIcon />
+              <BusinessBagIcon />
             </div>
-            <div className="name">Notification</div>
+            <div className="name">Career</div>
           </li>
-        </Link> */}
+        </Link>
 
         <Link to="/contact">
           <li
             className="nav-links"
             onClick={() => {
-              setIndic(81.5);
-              setMobIndic(80);
+              setIndic(85.5);
+              setMobIndic(83.5);
             }}
           >
             <div className="icon">
