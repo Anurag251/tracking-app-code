@@ -260,11 +260,13 @@ section
 /**********    header    **********/
 .header-top-section
   @include flex($justify: flex-end)
+  flex-wrap: wrap
   font-size: 13px
   padding: .3rem 0
 
   a
     color: $pri
+    margin-bottom: 5px
 
   .email
     margin-left: 20px
@@ -734,7 +736,7 @@ footer
     width: 100%
     border-radius: 20px
     object-fit: contain
-    // -webkit-box-reflect: below 0 linear-gradient( rgba(0,0,0, 0.5), rgba(0,0,0,1))
+    // -webkit-box-reflect: below 0 linear-gradient( rgba(0,0,0, 0.2), rgba(0,0,0,0.5))
 
   .details
     h3
@@ -767,7 +769,7 @@ footer
     &.shrink
       @include shrinkLabel()
 
-  .input
+  .input, select
     height: 100%
     width: 100%
     background-color: $light
@@ -1193,6 +1195,17 @@ footer
 
 /**********    solutions    **********/
 .solutions
+  ::-webkit-scrollbar
+    width: 5px
+
+  ::-webkit-scrollbar-track
+    border: none
+    background-color: #e2e2e2
+
+  ::-webkit-scrollbar-thumb
+    background-color: $main
+    border-radius: 10px
+
   .title
     font-size: 30px
     margin-bottom: 2rem
@@ -1433,6 +1446,17 @@ footer
       font-size: 14px
       color: rgba($dark, .7)
 
+    ::-webkit-scrollbar
+      width: 5px
+
+    ::-webkit-scrollbar-track
+      border: none
+      background-color: #e2e2e2
+
+    ::-webkit-scrollbar-thumb
+      background-color: $main
+      border-radius: 10px
+
     .desc
       max-height: 100px
       overflow-y: auto
@@ -1561,8 +1585,18 @@ footer
     object-fit: contain
 
 .our-teams
+  ::-webkit-scrollbar
+    width: 5px
+
+  ::-webkit-scrollbar-track
+    border: none
+    background-color: #e2e2e2
+
+  ::-webkit-scrollbar-thumb
+    background-color: $main
+    border-radius: 10px
   .sec
-    margin-bottom: 3rem
+    margin-bottom: 1rem
 
     &:nth-last-child(1)
       margin-bottom: 0
@@ -1577,39 +1611,46 @@ footer
     @include flex($justify: center)
     align-items: flex-start
     flex-wrap: wrap
+    max-width: 800px
+    margin: 0 auto
+    padding: 20px
 
     .item
-      margin: 0 1rem 1rem
+      margin: 0 1rem 1.5rem
       @include flex($justify: center)
       flex-direction: column
 
       .image-sec
         img
-          height: 100px
-          width: 100px
+          height: 180px
+          width: 180px
           object-fit: cover
           border-radius: 20px
 
       .details-sec
-        text-align: center
         @include flex($justify: center)
         flex-direction: column
         justify-content: flex-start
 
         .name
-          font-size: 16px
+          font-size: 17px
 
         .depart
           margin: 5px 0
-          font-size: 12px
+          font-size: 15px
           max-width: 100px
           color: rgba($dark, .6)
           text-align: center
 
         .desc
-          font-size: 12px
-          max-width: 120px
+          font-size: 14px
+          max-width: 190px
           margin-top: 5px
+          height: 55px
+          overflow: auto
+          text-align: justify
+          padding-right: 5px
+          // text-align: justify
 
 /**********    career-page    **********/
 .career-page
@@ -1687,6 +1728,9 @@ footer
     color: rgba($dark, .8)
     text-align: justify
 
+  p
+    margin-bottom: 8px
+
   h4
     margin: 1rem 0 .5rem
 
@@ -1747,9 +1791,15 @@ footer
             opacity: 1
 
 .job-apply-page
-  padding: 1.5rem
   background-color: $light
   border-radius: 20px
+  padding: 1rem
+
+  .inner-sec
+    max-width: 500px
+    background-color: $light
+    padding: 1rem
+    border-radius: 20px
 
 .terms-conditions-page
   padding: 1.5rem
@@ -1769,3 +1819,107 @@ footer
     font-size: 16px
     line-height: 1.5rem
     margin-bottom: 2rem
+    white-space: pre-line
+
+  .pdf-file
+    height: 100vh
+    width: 100%
+    margin-bottom: 1rem
+
+  .react-pdf__Document
+    .react-pdf__Page
+      @include flex($justify: center)
+
+      // canvas
+      //   height: 100% !important
+      //   width: 100% !important
+
+.download-our-app
+  @include grid($columns: 1fr 1fr)
+
+  .image-section
+    img
+      height: 400px
+      width: 100%
+      object-fit: contain
+
+  .content-section
+    h2
+      font-size: 30px
+
+    p
+      font-size: 16px
+      line-height: 1.5rem
+      margin: .5rem 0 1rem
+
+  .download-now
+    margin: 1rem 0
+    padding: .5rem
+    font-weight: 400
+    color: $dark
+    background-color: $light
+    @include flex($justify: center)
+    align-items: center
+    max-width: 230px
+    border-radius: 40px
+
+    span
+      font-size: 24px
+
+    .icon
+      @include flex($justify: center)
+
+      svg
+        height: 30px
+        width: 30px
+        transform: rotate(-90deg)
+
+        path
+          fill: $dark
+          stroke: $dark
+
+  .download-area
+    @include flex($justify: flex-start)
+    flex-wrap: wrap
+
+    .qr
+      height: 200px
+      width: 200px
+      margin-left: 1rem
+
+      img
+        height: 100%
+        width: 100%
+        object-fit: contain
+
+  .button-group
+    @include flex($justify: flex-start)
+    flex-direction: column
+    align-items: flex-start
+
+    a
+      display: inline-block
+
+    button
+      padding: .7rem
+      @include flex($justify: flex-start)
+      text-align: left
+      background-color: $dark
+      color: $light
+      margin: 5px
+      border-radius: 10px
+      cursor: pointer
+
+      &:hover
+        background-color: $main
+
+      i
+        font-size: 36px
+        margin-right: 10px
+
+      .text
+        span
+          font-size: 12px
+
+        h5
+          font-size: 18px

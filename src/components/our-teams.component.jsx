@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import profile1 from "../assets/images/profile.jpg";
 import { urls } from "../url";
 import Loading from "./loading.component";
+import defaultProfile from "../assets/images/default-profile.png";
+
 const profile =
   "https://images.pexels.com/photos/1454187/pexels-photo-1454187.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load";
 
@@ -46,7 +48,10 @@ const OurTeamsComponent = () => {
                 .map((team) => (
                   <div className="item" key={team.id}>
                     <div className="image-sec">
-                      <img src={team.image} alt="" />
+                      <img
+                        src={team.image ? team.image : defaultProfile}
+                        alt=""
+                      />
                     </div>
                     <div className="details-sec">
                       <h3 className="name">{team.name}</h3>
@@ -64,7 +69,10 @@ const OurTeamsComponent = () => {
                 .map((team) => (
                   <div className="item" key={team.id}>
                     <div className="image-sec">
-                      <img src={team.image} alt="" />
+                      <img
+                        src={team.image ? team.image : defaultProfile}
+                        alt=""
+                      />
                     </div>
                     <div className="details-sec">
                       <h3 className="name">{team.name}</h3>
@@ -80,7 +88,10 @@ const OurTeamsComponent = () => {
                 .map((team) => (
                   <div className="item" key={team.id}>
                     <div className="image-sec">
-                      <img src={team.image} alt="" />
+                      <img
+                        src={team.image ? team.image : defaultProfile}
+                        alt=""
+                      />
                     </div>
                     <div className="details-sec">
                       <h3 className="name">{team.name}</h3>

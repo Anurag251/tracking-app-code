@@ -22,7 +22,7 @@ const Footer = ({ removeComponent }) => {
         </li>
 
         <li>
-          <Link to="/apply-now">Proposal</Link>
+          <Link to="/proposal">Proposal</Link>
         </li>
 
         <li>

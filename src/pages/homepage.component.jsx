@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Banner from "../components/banner.componant";
+import DownloadOurAppComponent from "../components/download-our-app.component";
 import EarnWithUs from "../components/earn-with-us.component";
 import Feature from "../components/feature.componsnt";
 import HowToUse from "../components/how-to-use.component";
@@ -21,6 +22,10 @@ const Homepage = () => {
 
       <section>
         <Solutions />
+      </section>
+
+      <section>
+        <DownloadOurAppComponent />
       </section>
 
       <section>

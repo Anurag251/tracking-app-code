@@ -1,31 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CustomButton from "./custom-button.component";
 
-import img1 from "../assets/images/profile.jpg";
-import img2 from "../assets/images/feature1.png";
-import img3 from "../assets/images/banner2.png";
-import img4 from "../assets/images/feature2.png";
+import { urls } from "../url";
 
 const CareerComponent = () => {
+  const [careers, setCareers] = useState([]);
+
+  useEffect(() => {
+    fetch(urls + "career/")
+      .then((res) => res.json())
+      .then((data) => setCareers(data));
+  }, []);
+
   return (
     <div className="career">
       <div className="list">
-        <Link to="/career-details">
-          <div className="item">
-            <div className="image-section">
-              <img src={img1} alt="" />
+        {careers.map((career) => (
+          <Link to={`/career-details/${career.id}`} key={career.id}>
+            <div className="item">
+              <div className="image-section">
+                <img src={career.image} alt="" />
+              </div>
+
+              <div className="name">{career.title}</div>
+
+              <p>
+                <i className="fas fa-briefcase"></i>{" "}
+                {career.type === "Full" ? "Full Time" : "Part Time"}
+              </p>
+
+              <p>
+                <i className="fas fa-clock"></i> Deadline: {career.end_date}
+              </p>
+
+              <CustomButton>View Details</CustomButton>
             </div>
-
-            <div className="name">Hello Worlds</div>
-
-            <p>
-              <i className="fas fa-briefcase"></i> Full Time
-            </p>
-
-            <CustomButton>Apply Now</CustomButton>
-          </div>
-        </Link>
+          </Link>
+        ))}
       </div>
     </div>
   );

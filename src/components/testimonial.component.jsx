@@ -15,7 +15,7 @@ const Testimonial = () => {
     <div className="testimonial">
       <div className="title">Testimonial</div>
 
-      {testimonialData !== [] ? (
+      {testimonialData[0] !== undefined ? (
         <Swiper
           spaceBetween={10}
           slidesPerView={1}

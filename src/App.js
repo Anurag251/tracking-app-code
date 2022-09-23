@@ -22,6 +22,7 @@ import CareerDetailsPageComponent from "./pages/career-details-page.component";
 import FaqsPageComponent from "./pages/faqs-page.component";
 import JobApplyPageComponent from "./pages/job-apply-page.component";
 import TermsConditionsPageComponent from "./pages/terms-conditions-page.component";
+import ProposalPageComponent from "./pages/proposal-page.component";
 
 // hello
 const App = () => {
@@ -76,17 +77,25 @@ const App = () => {
 
               <Route
                 exact
-                path="/career-details"
+                path="/career-details/:careerId"
                 component={CareerDetailsPageComponent}
               />
 
               <Route exact path="/faqs" component={FaqsPageComponent} />
 
-              <Route
-                exact
-                path="/apply-now"
-                component={JobApplyPageComponent}
-              />
+              <Route exact path="/apply-now/:jobId">
+                <JobApplyPageComponent
+                  setError={setError}
+                  setErrorMessage={setErrorMessage}
+                />
+              </Route>
+
+              <Route exact path="/proposal">
+                <ProposalPageComponent
+                  setError={setError}
+                  setErrorMessage={setErrorMessage}
+                />
+              </Route>
 
               <Route
                 exact

@@ -90,6 +90,12 @@ $para: #333333
         img
           height: 300px
 
+  /**********    career-page    **********/
+  .career-page
+    .career
+      .list
+        @include grid($columns: 1fr 1fr)
+
 @media only screen and (max-width: 800px)
   .wrapper
     max-width: 600px
@@ -174,6 +180,12 @@ $para: #333333
         img
           height: 170px
 
+  /**********    career-page    **********/
+  .career-page
+    .career
+      .list
+        @include grid($columns: 1fr)
+
 @media only screen and (max-width: 600px)
   .wrapper
     max-width: 450px
@@ -191,6 +203,9 @@ $para: #333333
     width: 100%
 
   /**********    header    **********/
+  .header-top-section
+    display: none
+
   header
     @include grid($columns: 1fr 1.5fr)
     grid-gap: 10px
