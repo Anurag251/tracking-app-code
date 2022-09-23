@@ -74,6 +74,7 @@ const OurTeamsComponent = () => {
                         alt=""
                       />
                     </div>
+
                     <div className="details-sec">
                       <h3 className="name">{team.name}</h3>
                       <h5 className="depart">{team.role}</h5>
@@ -119,7 +120,7 @@ const OurTeamsComponent = () => {
           </div>
         </div>
       ) : (
-        <Loading />
+        "No Data Found"
       )}
     </>
   );

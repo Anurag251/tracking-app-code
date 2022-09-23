@@ -59,7 +59,7 @@ const Testimonial = () => {
           ))}
         </Swiper>
       ) : (
-        <Loading />
+        "No Data Found"
       )}
     </div>
   );

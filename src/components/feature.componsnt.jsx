@@ -21,7 +21,7 @@ const Feature = () => {
           ))}
         </div>
       ) : (
-        <Loading />
+        "No Data Found"
       )}
     </div>
   );

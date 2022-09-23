@@ -60,7 +60,7 @@ const TermsConditionsPageComponent = () => {
           ))}
         </React.Fragment>
       ) : (
-        <Loading />
+        "No Data Found"
       )}
     </div>
   );

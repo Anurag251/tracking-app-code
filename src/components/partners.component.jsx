@@ -23,48 +23,48 @@ const Partners = () => {
 
   return (
     <div className="partners">
-      <div className="title">Partners</div>
-
       {partners[0] !== undefined ? (
-        <Swiper
-          slidesPerView={2}
-          spaceBetween={20}
-          pagination={{
-            clickable: true,
-          }}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-            640: {
-              slidesPerView: 3,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 20,
-            },
-            1024: {
-              slidesPerView: 5,
-              spaceBetween: 20,
-            },
-          }}
-          className="mySwiper"
-        >
-          {partners.map((partner) => (
-            <SwiperSlide key={partner.id}>
-              <a href={partner.link} target="blank">
-                <div className="item">
-                  <img src={partner.image} alt="" />
-                </div>
-              </a>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      ) : (
-        <Loading />
-      )}
+        <React.Fragment>
+          <div className="title">Partners</div>
+
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={20}
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 20,
+              },
+            }}
+            className="mySwiper"
+          >
+            {partners.map((partner) => (
+              <SwiperSlide key={partner.id}>
+                <a href={partner.link} target="blank">
+                  <div className="item">
+                    <img src={partner.image} alt="" />
+                  </div>
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </React.Fragment>
+      ) : null}
     </div>
   );
 };

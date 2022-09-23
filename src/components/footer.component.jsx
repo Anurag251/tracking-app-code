@@ -65,7 +65,7 @@ const Footer = ({ removeComponent }) => {
           ) : null}
         </div>
       ) : (
-        <Loading />
+        "No Data Found"
       )}
     </footer>
   );

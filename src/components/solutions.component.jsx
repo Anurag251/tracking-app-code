@@ -68,7 +68,7 @@ const Solutions = () => {
           ))}
         </Swiper>
       ) : (
-        <Loading />
+        "No Data Found"
       )}
     </div>
   );

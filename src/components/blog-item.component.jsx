@@ -6,7 +6,7 @@ const BlogItem = ({ blogData }) => {
   return (
     <>
       {!blogData ? (
-        <Loading />
+        "No Data Found"
       ) : (
         <div className="blog-item">
           <div className="image">

@@ -55,7 +55,7 @@ const FaqsPageComponent = () => {
           </ul>
         </div>
       ) : (
-        <Loading />
+        "No Data Found"
       )}
     </div>
   );

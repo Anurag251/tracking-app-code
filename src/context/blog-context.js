@@ -15,7 +15,7 @@ export const BlogProvider = () => {
 
   return (
     <BlogContext.Provider value={[blogDatas, setBlogDatas]}>
-      {blogDatas !== [] ? <Blog /> : <Loading />}
+      {blogDatas !== [] ? <Blog /> : "No Data Found"}
     </BlogContext.Provider>
   );
 };
