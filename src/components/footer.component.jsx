@@ -14,7 +14,7 @@ const Footer = ({ removeComponent }) => {
 
   return (
     <footer>
-      <h4>© 2015-2021 Tracking App All rights reserved.</h4>
+      <h4>© 2022 Elites Logistics Pvt Ltd All rights reserved.</h4>
 
       <ul>
         <li>
