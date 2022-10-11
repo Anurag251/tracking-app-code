@@ -31,6 +31,7 @@ const OurTeamsComponent = () => {
       .then((res) => res.json())
       .then((data) => {
         setTeams(data);
+        console.log(data);
         data.filter((data) => (data.role === "BOD" ? setBOD(true) : null));
       });
   }, []);
@@ -40,7 +41,7 @@ const OurTeamsComponent = () => {
       {teams[0] !== undefined ? (
         <div className="our-teams">
           <div className="sec">
-            {BOD && <div className="title">BOD</div>}
+            {BOD && <div className="title">Board Of Directors</div>}
 
             <div className="team-list">
               {teams
@@ -96,7 +97,7 @@ const OurTeamsComponent = () => {
                     </div>
                     <div className="details-sec">
                       <h3 className="name">{team.name}</h3>
-                      <h5 className="depart">{team.role}</h5>
+                      <h5 className="depart">{team.description}</h5>
                     </div>
                   </div>
                 ))}
@@ -112,7 +113,7 @@ const OurTeamsComponent = () => {
                     </div>
                     <div className="details-sec">
                       <h3 className="name">{team.name}</h3>
-                      <h5 className="depart">{team.role}</h5>
+                      <h5 className="depart">{team.description}</h5>
                     </div>
                   </div>
                 ))}

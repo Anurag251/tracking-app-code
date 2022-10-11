@@ -52,7 +52,7 @@ const Aboutpage = () => {
             marginBottom: "1rem",
           }}
         >
-          Our Team Members
+          OUR TEAMS
         </h2>
         <OurTeamsComponent />
       </section>
