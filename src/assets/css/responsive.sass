@@ -186,6 +186,13 @@ $para: #333333
       .list
         @include grid($columns: 1fr)
 
+  .our-teams
+    .team-list
+      justify-content: space-around
+
+      .item
+        width: 33.33%
+
 @media only screen and (max-width: 600px)
   .wrapper
     max-width: 450px
@@ -321,6 +328,9 @@ $para: #333333
   .our-teams
     .team-list
       justify-content: space-around
+
+      .item
+        width: 33.33%
 
   /**********    notification-page    **********/
   .notification-page
@@ -548,3 +558,10 @@ $para: #333333
           span
             display: block
             color: $dark
+
+  .our-teams
+    .team-list
+      justify-content: space-around
+
+      .item
+        width: 100%
