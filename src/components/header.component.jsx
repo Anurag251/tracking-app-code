@@ -1,39 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo/main-logo.png";
 import { UserIcon, ThinArrowIcon } from "./icons.component";
+import { urls } from "../url";
 
 const Header = () => {
+  const [contact, setContact] = useState({});
+
+  useEffect(() => {
+    fetch(urls + "home/contact/")
+      .then((res) => res.json())
+      .then((data) => setContact(data[0]));
+  }, []);
+
   return (
     <React.Fragment>
       <div className="header-top-section">
-        <a href="mailto: eliteslogistics100@gmail.com">
-          <div className="email">
-            <i className="fas fa-envelope"></i>
-            eliteslogistics100@gmail.com
-          </div>
-        </a>
+        {contact.email && (
+          <a href={`mailto: ${contact.email}`}>
+            <div className="email">
+              <i className="fas fa-envelope"></i>
+              {contact.email}
+            </div>
+          </a>
+        )}
 
-        <a href="tel: +977015912468">
-          <div className="email">
-            <i className="fas fa-phone-alt"></i>
-            CSD: +977-015912468
-          </div>
-        </a>
+        {contact.phone_number1 && (
+          <a href={`tel: ${contact.phone_number1}`}>
+            <div className="email">
+              <i className="fas fa-phone-alt"></i>
+              CSD: {contact.phone_number1}
+            </div>
+          </a>
+        )}
 
-        <a href="tel: +9779881111100">
-          <div className="email">
-            <i className="fas fa-phone-alt"></i>
-            Operation: +977-9881111100
-          </div>
-        </a>
+        {contact.phone_number2 && (
+          <a href={`tel: ${contact.phone_number2}`}>
+            <div className="email">
+              <i className="fas fa-phone-alt"></i>
+              Operation: {contact.phone_number2}
+            </div>
+          </a>
+        )}
 
-        <a href="tel: +9779881111200">
-          <div className="email">
-            <i className="fas fa-phone-alt"></i>
-            Courier: +977-9881111200
-          </div>
-        </a>
+        {contact.phone_number3 && (
+          <a href={`tel: ${contact.phone_number3}`}>
+            <div className="email">
+              <i className="fas fa-phone-alt"></i>
+              Courier: {contact.phone_number3}
+            </div>
+          </a>
+        )}
       </div>
 
       <header>
@@ -43,32 +60,7 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* <div className="search">
-        <form action="">
-          <input type="search" placeholder="Search..." />
-          <button className="search-btn">
-            <SearchIcon />
-          </button>
-        </form>
-      </div> */}
-
-        <div className="sign-up-btn">
-          <a href="https://delivery.eliteslogistics.com/login" target="blank">
-            <div className="icon">
-              <UserIcon />
-            </div>
-
-            <span>Login</span>
-          </a>
-
-          <div className="das" />
-
-          <a href="https://delivery.eliteslogistics.com/sign-up" target="blank">
-            <span className="su">
-              Sign Up <ThinArrowIcon />
-            </span>
-          </a>
-        </div>
+        {/* rest of your header content */}
       </header>
     </React.Fragment>
   );
